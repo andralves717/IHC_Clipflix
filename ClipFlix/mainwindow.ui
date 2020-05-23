@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ClipFlix</string>
   </property>
   <property name="windowIcon">
    <iconset resource="Resource.qrc">
@@ -190,7 +190,7 @@ color: white;</string>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
-      <widget class="QWidget" name="home" native="true">
+      <widget class="QWidget" name="home">
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
          <widget class="QScrollArea" name="scroll_home">
@@ -456,7 +456,7 @@ color: white;</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="movies" native="true">
+      <widget class="QWidget" name="movies">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QFrame" name="frame">
@@ -561,8 +561,8 @@ color: white;</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>634</width>
-             <height>409</height>
+             <width>22</width>
+             <height>16</height>
             </rect>
            </property>
           </widget>
@@ -570,13 +570,13 @@ color: white;</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="series" native="true">
+      <widget class="QWidget" name="series">
        <layout class="QGridLayout" name="gridLayout_9"/>
       </widget>
-      <widget class="QWidget" name="music" native="true">
+      <widget class="QWidget" name="music">
        <layout class="QGridLayout" name="gridLayout_10"/>
       </widget>
-      <widget class="QWidget" name="favourite" native="true">
+      <widget class="QWidget" name="favourite">
        <layout class="QGridLayout" name="gridLayout_5"/>
       </widget>
      </widget>

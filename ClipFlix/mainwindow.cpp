@@ -31,7 +31,6 @@ MainWindow::MainWindow(QWidget *parent) :
         mo_pic[i] = mo_pic[i].scaledToHeight(200,Qt::SmoothTransformation);
         movie_label[i]->setPixmap(mo_pic[i]);
         ui->home_movies_scroll->addWidget(movie_label[i]);
-
     }
 
     // Series Tab
@@ -83,8 +82,6 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     ui->group_year->setLayout(vbox_year);
-
-
 
 
 }
