@@ -36,6 +36,8 @@ public:
     QPixmap get_image();
     QStringList get_genre();
 
+    bool operator==(const Serie& s);
+
 private:
     QString _title;
     QList<int> _years;

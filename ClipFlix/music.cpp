@@ -80,3 +80,14 @@ QPixmap Music::get_image(){
 QString Music::get_genre(){
     return this->_genre;
 }
+
+bool Music::operator==(const Music& m){
+    if(     this->_year == m._year &&
+            this->_genre == m._genre &&
+            this->_title == m._title &&
+            this->_duration == m._duration &&
+            this->_album == m._album &&
+            this->_author == m._author)
+                return true;
+    return false;
+}

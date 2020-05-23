@@ -113,3 +113,15 @@ QPixmap Serie::get_image(){
 QStringList Serie::get_genre(){
     return this->_genre;
 }
+
+bool Serie::operator==(const Serie& s){
+    if(     this->_years == s._years &&
+            this->_genre == s._genre &&
+            this->_title == s._title &&
+            this->_rating == s._rating &&
+            this->_seasons == s._seasons &&
+            this->_finished == s._finished &&
+            this->_description == s._description)
+                return true;
+    return false;
+}

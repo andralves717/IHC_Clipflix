@@ -32,6 +32,8 @@ public:
     QPixmap get_image();
     QString get_genre();
 
+    bool operator==(const Music& m);
+
 
 private:
     QString _title;

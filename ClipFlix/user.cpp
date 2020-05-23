@@ -39,17 +39,17 @@ bool User::set_fav_music(QList<Music> fav_musics){
     return true;
 }
 
-bool User::add_fav_movie(Movie movie){
+bool User::add_fav_movie(const Movie movie){
     if(this->_fav_movie.contains(movie)) return false;
     this->_fav_movie.append(movie);
     return true;
 }
-bool User::add_fav_serie(Serie serie){
+bool User::add_fav_serie(const Serie serie){
     if(this->_fav_serie.contains(serie)) return false;
     this->_fav_serie.append(serie);
     return true;
 }
-bool User::add_fav_music(Music music){
+bool User::add_fav_music(const Music music){
     if(this->_fav_music.contains(music)) return false;
     this->_fav_music.append(music);
     return true;

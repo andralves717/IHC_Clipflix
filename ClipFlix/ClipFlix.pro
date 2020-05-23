@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        list.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
         user.cpp
 
 HEADERS += \
+        list.h \
         login.h \
         mainwindow.h \
         movie.h \
@@ -41,6 +43,7 @@ HEADERS += \
         user.h
 
 FORMS += \
+        list.ui \
         login.ui \
         mainwindow.ui
 

@@ -79,3 +79,14 @@ QPixmap Movie::get_image(){
 QStringList Movie::get_genre(){
     return this->_genre;
 }
+
+bool Movie::operator==(const Movie& m){
+    if(     this->_year == m._year &&
+            this->_genre == m._genre &&
+            this->_title == m._title &&
+            this->_rating == m._rating &&
+            this->_duration == m._duration &&
+            this->_description == m._description)
+                return true;
+    return false;
+}

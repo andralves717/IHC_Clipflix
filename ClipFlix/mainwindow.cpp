@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include <QRadioButton>
 #include <QDebug>
+#include "list.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -58,31 +59,12 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->home_music_scroll->addWidget(music_label[i]);
 
     }
-
-    // Real Movie Tab
-
-    QVBoxLayout *vbox_genre = new QVBoxLayout;
-    QRadioButton *genre[9];
-    QStringList genre_tex = {"Action", "Adventure", "Animation", "Biography", "Comedy", "Family", "Fantasy", "Musical", "Sci-fi"};
-
-    for (int i=0; i<9;i++){
-        genre[i] = new QRadioButton(this);
-        genre[i]->setText(genre_tex.at(i));
-        vbox_genre->addWidget(genre[i]);
-    }
-    ui->group_genre->setLayout(vbox_genre);
-
-    QVBoxLayout *vbox_year = new QVBoxLayout;
-    QRadioButton *year[4];
-
-    for (int i=0; i<4;i++){
-        year[i] = new QRadioButton(this);
-        year[i]->setText(QString::number(2020-i));
-        vbox_year->addWidget(year[i]);
-    }
-
-    ui->group_year->setLayout(vbox_year);
-
+    List *movies = new List(this, 0);
+    ui->movies_layout->addWidget(movies);
+    List *series = new List(this, 1);
+    ui->series_layout->addWidget(series);
+    List *musics = new List(this, 2);
+    ui->musics_layout->addWidget(musics);
 
 }
 
@@ -186,23 +168,5 @@ void MainWindow::on_tabWidget_currentChanged(int index)
             ui->pushButton_1->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;color:rgb(0,188,212);} QPushButton:hover {color: rgb(0,188,212);}");
         break;
 
-    }
-}
-
-void MainWindow::on_clear_clicked()
-{
-    foreach (QRadioButton *genre_object, ui->group_genre->findChildren<QRadioButton *>()) {
-        if(genre_object->isChecked()){
-            genre_object->setAutoExclusive(false);
-            genre_object->setChecked(false);
-            genre_object->setAutoExclusive(true);
-        }
-    }
-    foreach (QRadioButton *year_object, ui->group_year->findChildren<QRadioButton *>()) {
-        if(year_object->isChecked()){
-            year_object->setAutoExclusive(false);
-            year_object->setChecked(false);
-            year_object->setAutoExclusive(true);
-        }
     }
 }

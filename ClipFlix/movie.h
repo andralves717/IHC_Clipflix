@@ -31,6 +31,8 @@ public:
     QPixmap get_image();
     QStringList get_genre();
 
+    bool operator==(const Movie& m);
+
 private:
     QString _title;
     int _year;
