@@ -24,20 +24,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        data.cpp \
         list.cpp \
         login.cpp \
         main.cpp \
         mainwindow.cpp \
         movie.cpp \
+        movie_scroll.cpp \
         music.cpp \
         serie.cpp \
         user.cpp
 
 HEADERS += \
+        data.h \
         list.h \
         login.h \
         mainwindow.h \
         movie.h \
+        movie_scroll.h \
         music.h \
         serie.h \
         user.h
@@ -45,7 +49,8 @@ HEADERS += \
 FORMS += \
         list.ui \
         login.ui \
-        mainwindow.ui
+        mainwindow.ui \
+        movie_scroll.ui
 
 
 # Default rules for deployment.

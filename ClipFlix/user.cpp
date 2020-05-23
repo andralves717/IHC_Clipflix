@@ -72,3 +72,8 @@ bool User::valid_login(QString username, QString password){
     if(this->_username == username && this->_password == password) return true;
     return false;
 }
+
+bool User::operator==(const User& u){
+    if(this->_username == u._username) return true;
+    return false;
+}

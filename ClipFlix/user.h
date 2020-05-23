@@ -34,6 +34,8 @@ public:
 
     bool valid_login(QString username, QString password);
 
+    bool operator==(const User& u);
+
 
 private:
     QString _username;

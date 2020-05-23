@@ -1,6 +1,7 @@
 #include "list.h"
 #include "ui_list.h"
 #include <QRadioButton>
+#include "movie_scroll.h"
 
 List::List(QWidget *parent, int type) :
     QWidget(parent),
@@ -39,6 +40,10 @@ List::List(QWidget *parent, int type) :
     }
 
     ui->group_year->setLayout(vbox_year);
+
+    movie_scroll *movies = new movie_scroll(this);
+    ui->scroll_layout->addWidget(movies);
+    ui->scroll_layout->addWidget(movies);
 }
 
 List::~List()
