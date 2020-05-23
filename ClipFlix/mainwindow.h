@@ -43,6 +43,10 @@ private slots:
 
     void on_pushButton_5_clicked();
 
+    void on_tabWidget_currentChanged(int index);
+
+    void on_clear_clicked();
+
 private:
     Ui::MainWindow *ui;
     login *l;
