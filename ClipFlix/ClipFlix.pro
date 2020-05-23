@@ -29,14 +29,16 @@ SOURCES += \
         mainwindow.cpp \
         movie.cpp \
         music.cpp \
-        serie.cpp
+        serie.cpp \
+        user.cpp
 
 HEADERS += \
         login.h \
         mainwindow.h \
         movie.h \
         music.h \
-        serie.h
+        serie.h \
+        user.h
 
 FORMS += \
         login.ui \
