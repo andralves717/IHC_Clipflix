@@ -19,10 +19,11 @@ public:
     bool set_years(QList<int> years);
     bool set_years(int begin, int end);
     bool set_seasons(int seasons);
-    bool set_rationg(int rating);
+    bool set_rating(int rating);
     bool set_description(QString description);
     bool set_image(QPixmap image);
     bool set_genre(QStringList genre);
+    bool set_finished(bool f);
 
     bool add_year(int year);
 
@@ -35,6 +36,7 @@ public:
     QString get_description();
     QPixmap get_image();
     QStringList get_genre();
+    bool finished();
 
     QString get_genre_string();
 

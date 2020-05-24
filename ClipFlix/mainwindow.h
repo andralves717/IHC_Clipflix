@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "login.h"
 #include "movie.h"
+#include "serie.h"
+#include "music.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +20,8 @@ public:
     ~MainWindow();
 
     QList<Movie> movie_list();
+    QList<Serie> serie_list();
+    QList<Music> music_list();
 
 private slots:
     void on_actionAbout_Qt_triggered();

@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     Data *d = new Data();
     d->add_user(u);
     d->set_movies(movie_list());
+    d->set_series(serie_list());
+    d->set_musics(music_list());
     d->set_active_user(u);
 
     da = d;
@@ -209,10 +211,104 @@ QList<Movie> MainWindow::movie_list(){
     return ret;
 }
 
+QList<Serie> MainWindow::serie_list(){
+    QList<Serie> ret;
+    //La Casa de Papel
+    Serie casapapel("La Casa de Papel");
+    casapapel.set_rating(84);
+    casapapel.set_seasons(4);
+    casapapel.set_finished(false);
+    casapapel.set_description("An unusual group of robbers attempt to carry out the most perfect robbery in Spanish history - stealing 2.4 billion euros from the Royal Mint of Spain.");
+    casapapel.set_years({2017,2019,2020});
+    QStringList casapapel_genre = {"Action", "Crime", "Mystery"};
+    casapapel.set_genre(casapapel_genre);
+    QPixmap casapapel_image(":/images/image/series_1.jpg");
+    casapapel.set_image(casapapel_image);
+    ret.append(casapapel);
+
+    //Chernobyl
+    Serie chernobyl("Chernobyl");
+    chernobyl.set_rating(94);
+    chernobyl.set_seasons(1);
+    chernobyl.set_finished(true);
+    chernobyl.set_description("In April 1986, an explosion at the Chernobyl nuclear power plant in the Union of Soviet Socialist Republics becomes one of the world's worst man-made catastrophes.");
+    chernobyl.set_years({2019});
+    QStringList chernobyl_genre = {"Drama", "History", "Thriller"};
+    chernobyl.set_genre(chernobyl_genre);
+    QPixmap chernobyl_image(":/images/image/series_2.jpg");
+    chernobyl.set_image(chernobyl_image);
+    ret.append(chernobyl);
+
+    //Game of Thrones
+    Serie got("Game of Thrones");
+    got.set_rating(93);
+    got.set_seasons(8);
+    got.set_finished(true);
+    got.set_description("Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.");
+    got.set_years({2011,2012,2013,2014,2015,2016,2017,2019});
+    QStringList got_genre = {"Action", "Adventure", "Drama"};
+    got.set_genre(got_genre);
+    QPixmap got_image(":/images/image/series_3.jpg");
+    got.set_image(got_image);
+    ret.append(got);
+
+    //The Witcher
+    Serie witcher("The Witcher");
+    witcher.set_rating(83);
+    witcher.set_seasons(1);
+    witcher.set_finished(false);
+    witcher.set_description("Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.");
+    witcher.set_years({2019});
+    QStringList witcher_genre = {"Action", "Adventure", "Fantasy"};
+    witcher.set_genre(witcher_genre);
+    QPixmap witcher_image(":/images/image/series_4.jpg");
+    witcher.set_image(witcher_image);
+    ret.append(witcher);
+
+    return ret;
+}
+QList<Music> MainWindow::music_list(){
+    QList<Music> ret;
+
+    //Chop Suey!
+    Music chop("Chop Suey!", "System of a Down", "Toxicity");
+    chop.set_year(2001);
+    chop.set_genre("Metal");
+    QPixmap chop_image(":/images/image/music_1.jpg");
+    chop.set_image(chop_image);
+    QTime chop_time(0,3,30);
+    chop.set_duration(chop_time);
+    ret.append(chop);
+
+    //A Paixão
+    Music paixao("A Paixão", "Rui Veloso", "Mingos & Os Samurais");
+    paixao.set_year(1990);
+    paixao.set_genre("Rock");
+    QPixmap paixao_image(":/images/image/music_2.jpg");
+    paixao.set_image(paixao_image);
+    QTime paixao_time(0,3,50);
+    paixao.set_duration(paixao_time);
+    ret.append(paixao);
+
+    //Gangnam Style
+    Music gangnam("Gangnam Style", "PSY", "Psy 6 (Six Rules), Part 1");
+    gangnam.set_year(2012);
+    gangnam.set_genre("K-POP");
+    QPixmap gangnam_image(":/images/image/music_3.jpg");
+    gangnam.set_image(gangnam_image);
+    QTime gangnam_time(0,3,39);
+    gangnam.set_duration(gangnam_time);
+    ret.append(gangnam);
+
+    return ret;
+}
+
 void MainWindow::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
         QList<User> user_tmp = da->get_users();
         User tmp_user = user_tmp.at(0);
-        qDebug() << tmp_user.get_fav_movie().size();
+        qDebug() << QString::number(tmp_user.get_fav_movie().size())+" Filmes favoritos";
+        qDebug() << QString::number(tmp_user.get_fav_serie().size())+" Séries favoritos";
+        qDebug() << QString::number(tmp_user.get_fav_music().size())+" Músicas favoritos";
     }
 }

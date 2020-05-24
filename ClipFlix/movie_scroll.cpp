@@ -3,14 +3,14 @@
 #include <QMouseEvent>
 #include <QDebug>
 
-Data *data_local;
+Data *data_movie;
 
 movie_scroll::movie_scroll(QWidget *parent, Movie m, Data *d) :
     QWidget(parent),
     ui(new Ui::movie_scroll)
 {
     ui->setupUi(this);
-    data_local = d;
+    data_movie = d;
     movie = m;
     ui->title->setTextFormat(Qt::RichText);
     ui->title->setText("<html><head/><body><p><span style=\" font-size:20pt;\">"+m.get_title()+"</span></p></body></html>");
@@ -35,13 +35,12 @@ void movie_scroll::mousePressEvent ( QMouseEvent * event ) {
 void movie_scroll::on_addFav_clicked()
 {
     if(ui->addFav->text()=="Add Favourite"){
-        if(data_local->add_fav_user("demo",this->movie)){
+        if(data_movie->add_fav_user("demo",this->movie)){
             qDebug() << "Adicionado "+ movie.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Favourite");
-            ui->addFav->setDown(true);
         }
     } else {
-        if(data_local->rm_fav_user("demo",this->movie)){
+        if(data_movie->rm_fav_user("demo",this->movie)){
             qDebug() << "Removido "+ movie.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Add Favourite");
         }

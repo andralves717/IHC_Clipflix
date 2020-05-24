@@ -7,6 +7,7 @@ Serie::Serie()
 
 Serie::Serie(QString title){
     this->_title = title;
+    this->_finished = true;
 }
 Serie::Serie(QString title, QList<int> years, int seasons, int rating, QString description){
     this->_title = title;
@@ -14,6 +15,7 @@ Serie::Serie(QString title, QList<int> years, int seasons, int rating, QString d
     this->_seasons = seasons;
     this->_rating = rating;
     this->_description = description;
+    this->_finished = true;
 }
 Serie::Serie(QString title, QList<int> years, int seasons, int rating, QString description, QPixmap image, QStringList genre){
     this->_title = title;
@@ -23,6 +25,7 @@ Serie::Serie(QString title, QList<int> years, int seasons, int rating, QString d
     this->_description = description;
     this->_image = image.scaledToHeight(200,Qt::SmoothTransformation);
     this->_genre = genre;
+    this->_finished = true;
 }
 
 Serie::~Serie(){
@@ -52,7 +55,7 @@ bool Serie::set_seasons(int seasons){
     this->_seasons = seasons;
     return true;
 }
-bool Serie::set_rationg(int rating){
+bool Serie::set_rating(int rating){
     this->_rating = rating;
     return true;
 }
@@ -66,6 +69,11 @@ bool Serie::set_image(QPixmap image){
 }
 bool Serie::set_genre(QStringList genre){
     this->_genre = genre;
+    return true;
+}
+
+bool Serie::set_finished(bool f){
+    this->_finished = f;
     return true;
 }
 
@@ -121,6 +129,10 @@ QString Serie::get_genre_string(){
     }
     ret.chop(2);
     return ret;
+}
+
+bool Serie::finished(){
+    return this->_finished;
 }
 
 bool Serie::operator==(const Serie& s){

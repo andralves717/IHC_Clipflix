@@ -22,7 +22,7 @@ Music::Music(QString title, QString author, QString album, int year, QTime durat
     this->_album = album;
     this->_year = year;
     this->_duration = duration;
-    this->_image = image;
+    this->_image = image.scaledToHeight(200,Qt::SmoothTransformation);
     this->_genre = genre;
 }
 
@@ -51,7 +51,7 @@ bool Music::set_duration(QTime duration){
     return true;
 }
 bool Music::set_image(QPixmap image){
-    this->_image = image;
+    this->_image = image.scaledToHeight(200,Qt::SmoothTransformation);
     return true;
 }
 bool Music::set_genre(QString genre){

@@ -2,6 +2,8 @@
 #include "ui_list.h"
 #include <QRadioButton>
 #include "movie_scroll.h"
+#include "serie_scroll.h"
+#include "music_scroll.h"
 
 List::List(QWidget *parent, int type, Data *d) :
     QWidget(parent),
@@ -41,10 +43,27 @@ List::List(QWidget *parent, int type, Data *d) :
 
     ui->group_year->setLayout(vbox_year);
 
-    foreach(Movie m, d->get_movies()){
-        movie_scroll *ms = new movie_scroll(this, m, d);
-        ui->scroll_layout->addWidget(ms);
+    switch (type) {
+        case 0:
+            foreach(Movie m, d->get_movies()){
+                movie_scroll *ms = new movie_scroll(this, m, d);
+                ui->scroll_layout->addWidget(ms);
+            }
+        break;
+        case 1:
+            foreach(Serie s, d->get_series()){
+                serie_scroll *ss = new serie_scroll(this, s, d);
+                ui->scroll_layout->addWidget(ss);
+            }
+        break;
+        case 2:
+            foreach(Music m, d->get_musics()){
+                music_scroll *ms = new music_scroll(this, m, d);
+                ui->scroll_layout->addWidget(ms);
+            }
+        break;
     }
+
 }
 
 List::~List()

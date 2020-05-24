@@ -32,7 +32,9 @@ SOURCES += \
         movie.cpp \
         movie_scroll.cpp \
         music.cpp \
+        music_scroll.cpp \
         serie.cpp \
+        serie_scroll.cpp \
         user.cpp
 
 HEADERS += \
@@ -43,14 +45,18 @@ HEADERS += \
         movie.h \
         movie_scroll.h \
         music.h \
+        music_scroll.h \
         serie.h \
+        serie_scroll.h \
         user.h
 
 FORMS += \
         list.ui \
         login.ui \
         mainwindow.ui \
-        movie_scroll.ui
+        movie_scroll.ui \
+        music_scroll.ui \
+        serie_scroll.ui
 
 
 # Default rules for deployment.
