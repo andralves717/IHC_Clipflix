@@ -114,6 +114,15 @@ QStringList Serie::get_genre(){
     return this->_genre;
 }
 
+QString Serie::get_genre_string(){
+    QString ret;
+    foreach (QString s, this->_genre) {
+        ret.append(s + ", ");
+    }
+    ret.chop(2);
+    return ret;
+}
+
 bool Serie::operator==(const Serie& s){
     if(     this->_years == s._years &&
             this->_genre == s._genre &&

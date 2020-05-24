@@ -2,6 +2,8 @@
 #define MOVIE_SCROLL_H
 
 #include <QWidget>
+#include "data.h"
+#include "movie.h"
 
 namespace Ui {
 class movie_scroll;
@@ -12,7 +14,7 @@ class movie_scroll : public QWidget
     Q_OBJECT
 
 public:
-    explicit movie_scroll(QWidget *parent = nullptr);
+    explicit movie_scroll(QWidget *parent = nullptr, Movie m = Movie(), Data *d = nullptr);
     ~movie_scroll();
 
 protected:
@@ -23,6 +25,8 @@ private slots:
 
 private:
     Ui::movie_scroll *ui;
+
+    Movie movie;
 };
 
 #endif // MOVIE_SCROLL_H

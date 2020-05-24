@@ -26,6 +26,10 @@ public:
     bool add_fav_serie(Serie serie);
     bool add_fav_music(Music music);
 
+    bool rm_fav_movie(Movie movie);
+    bool rm_fav_serie(Serie serie);
+    bool rm_fav_music(Music music);
+
     QString get_username();
     QString get_password();
     QList<Movie> get_fav_movie();

@@ -80,6 +80,15 @@ QStringList Movie::get_genre(){
     return this->_genre;
 }
 
+QString Movie::get_genre_string(){
+    QString ret;
+    foreach (QString s, this->_genre) {
+        ret.append(s + ", ");
+    }
+    ret.chop(2);
+    return ret;
+}
+
 bool Movie::operator==(const Movie& m){
     if(     this->_year == m._year &&
             this->_genre == m._genre &&

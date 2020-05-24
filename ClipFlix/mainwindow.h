@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "login.h"
+#include "movie.h"
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +16,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    QList<Movie> movie_list();
 
 private slots:
     void on_actionAbout_Qt_triggered();
@@ -44,6 +47,9 @@ private slots:
     void on_pushButton_5_clicked();
 
     void on_tabWidget_currentChanged(int index);
+
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
 
 private:
     Ui::MainWindow *ui;

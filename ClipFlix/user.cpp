@@ -55,6 +55,22 @@ bool User::add_fav_music(const Music music){
     return true;
 }
 
+bool User::rm_fav_movie(const Movie movie){
+    if(!this->_fav_movie.contains(movie)) return false;
+    this->_fav_movie.removeAll(movie);
+    return true;
+}
+bool User::rm_fav_serie(const Serie serie){
+    if(!this->_fav_serie.contains(serie)) return false;
+    this->_fav_serie.removeAll(serie);
+    return true;
+}
+bool User::rm_fav_music(const Music music){
+    if(!this->_fav_music.contains(music)) return false;
+    this->_fav_music.removeAll(music);
+    return true;
+}
+
 QString User::get_username(){
     return this->_username;
 }

@@ -7,16 +7,17 @@
 #include "serie.h"
 #include "music.h"
 
-class data
+class Data
 {
 public:
-    data();
-    data(QList<User> users, QList<Movie> movies, QList<Serie> series, QList<Music> musics);
+    Data();
+    Data(QList<User> users, QList<Movie> movies, QList<Serie> series, QList<Music> musics);
 
     bool set_users(QList<User> users);
     bool set_movies(QList<Movie> movies);
     bool set_series(QList<Serie> series);
     bool set_musics(QList<Music> musics);
+    bool set_active_user(User username);
 
     bool add_user(User user);
     bool add_movie(Movie movie);
@@ -27,6 +28,15 @@ public:
     QList<Movie> get_movies();
     QList<Serie> get_series();
     QList<Music> get_musics();
+    User get_active_user();
+
+    bool add_fav_user(QString username, Movie m);
+    bool add_fav_user(QString username, Serie s);
+    bool add_fav_user(QString username, Music m);
+
+    bool rm_fav_user(QString username, Movie m);
+    bool rm_fav_user(QString username, Serie s);
+    bool rm_fav_user(QString username, Music m);
 
 
 private:
@@ -35,6 +45,7 @@ private:
     QList<Movie> movies;
     QList<Serie> series;
     QList<Music> musics;
+    User active_user;
 };
 
 #endif // DATA_H
