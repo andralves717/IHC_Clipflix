@@ -20,8 +20,11 @@ public:
 private slots:
     void on_clear_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::List *ui;
+    int t;
 };
 
 #endif // LIST_H

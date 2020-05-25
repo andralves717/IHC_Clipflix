@@ -49,3 +49,35 @@ void music_scroll::on_addFav_clicked()
     }
 }
 
+void music_scroll::hide(){
+    QWidget::hide();
+}
+void music_scroll::hide(QString genre, int year){
+    if(!(music.get_genre().contains(genre)) || !(music.get_year() >= year && music.get_year() < year+10)) QWidget::hide();
+    return;
+}
+void music_scroll::hide(QString genre){
+    if(music.get_genre().contains(genre)) return;
+    QWidget::hide();
+}
+void music_scroll::hide(int year){
+    if(music.get_year() >= year && music.get_year() < year+10) return;
+    QWidget::hide();
+}
+
+
+void music_scroll::show(){
+    QWidget::show();
+}
+void music_scroll::show(QString genre, int year){
+    if(music.get_genre().contains(genre) && music.get_year() >= year && music.get_year() < year+10) QWidget::show();
+    return;
+}
+void music_scroll::show(QString genre){
+    if(music.get_genre().contains(genre)) QWidget::show();
+    return;
+}
+void music_scroll::show(int year){
+    if(music.get_year() >= year && music.get_year() < year+10) QWidget::show();
+    return;
+}

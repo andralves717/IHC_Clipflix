@@ -17,6 +17,16 @@ public:
     explicit serie_scroll(QWidget *parent = nullptr, Serie s = Serie(), Data *d = nullptr);
     ~serie_scroll();
 
+    void hide();
+    void hide(QString genre, int year);
+    void hide(int year);
+    void hide(QString genre);
+
+    void show();
+    void show(QString genre, int year);
+    void show(QString genre);
+    void show(int year);
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 

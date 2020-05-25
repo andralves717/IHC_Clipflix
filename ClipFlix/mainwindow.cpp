@@ -280,25 +280,25 @@ QList<Music> MainWindow::music_list(){
     chop.set_duration(chop_time);
     ret.append(chop);
 
-    //A Paixão
-    Music paixao("A Paixão", "Rui Veloso", "Mingos & Os Samurais");
-    paixao.set_year(1990);
-    paixao.set_genre("Rock");
-    QPixmap paixao_image(":/images/image/music_2.jpg");
-    paixao.set_image(paixao_image);
-    QTime paixao_time(0,3,50);
-    paixao.set_duration(paixao_time);
-    ret.append(paixao);
-
     //Gangnam Style
     Music gangnam("Gangnam Style", "PSY", "Psy 6 (Six Rules), Part 1");
     gangnam.set_year(2012);
     gangnam.set_genre("K-POP");
-    QPixmap gangnam_image(":/images/image/music_3.jpg");
+    QPixmap gangnam_image(":/images/image/music_2.jpg");
     gangnam.set_image(gangnam_image);
     QTime gangnam_time(0,3,39);
     gangnam.set_duration(gangnam_time);
     ret.append(gangnam);
+
+    //A Paixão
+    Music paixao("A Paixão", "Rui Veloso", "Mingos & Os Samurais");
+    paixao.set_year(1990);
+    paixao.set_genre("Rock");
+    QPixmap paixao_image(":/images/image/music_3.jpg");
+    paixao.set_image(paixao_image);
+    QTime paixao_time(0,3,50);
+    paixao.set_duration(paixao_time);
+    ret.append(paixao);
 
     return ret;
 }

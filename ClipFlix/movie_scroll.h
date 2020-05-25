@@ -17,6 +17,16 @@ public:
     explicit movie_scroll(QWidget *parent = nullptr, Movie m = Movie(), Data *d = nullptr);
     ~movie_scroll();
 
+    void hide();
+    void hide(QString genre, int year);
+    void hide(int year);
+    void hide(QString genre);
+
+    void show();
+    void show(QString genre, int year);
+    void show(QString genre);
+    void show(int year);
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 

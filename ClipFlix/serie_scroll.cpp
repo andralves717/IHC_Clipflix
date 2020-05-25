@@ -51,3 +51,35 @@ void serie_scroll::on_addFav_clicked()
     }
 }
 
+void serie_scroll::hide(){
+    QWidget::hide();
+}
+void serie_scroll::hide(QString genre, int year){
+    if(!(serie.get_genre().contains(genre)) || !(serie.get_years().contains(year))) QWidget::hide();
+    return;
+}
+void serie_scroll::hide(QString genre){
+    if(serie.get_genre().contains(genre)) return;
+    QWidget::hide();
+}
+void serie_scroll::hide(int year){
+    if(serie.get_years().contains(year)) return;
+    QWidget::hide();
+}
+
+
+void serie_scroll::show(){
+    QWidget::show();
+}
+void serie_scroll::show(QString genre, int year){
+    if(serie.get_genre().contains(genre) && serie.get_years().contains(year)) QWidget::show();
+    return;
+}
+void serie_scroll::show(QString genre){
+    if(serie.get_genre().contains(genre)) QWidget::show();
+    return;
+}
+void serie_scroll::show(int year){
+    if(serie.get_years().contains(year)) QWidget::show();
+    return;
+}

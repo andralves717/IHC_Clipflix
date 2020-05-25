@@ -51,7 +51,7 @@ bool Music::set_duration(QTime duration){
     return true;
 }
 bool Music::set_image(QPixmap image){
-    this->_image = image.scaledToHeight(200,Qt::SmoothTransformation);
+    this->_image = image.scaled(200,200);
     return true;
 }
 bool Music::set_genre(QString genre){

@@ -46,3 +46,36 @@ void movie_scroll::on_addFav_clicked()
         }
     }
 }
+
+void movie_scroll::hide(){
+    QWidget::hide();
+}
+void movie_scroll::hide(QString genre, int year){
+    if(!(movie.get_genre().contains(genre)) || !(movie.get_year() == year)) QWidget::hide();
+    return;
+}
+void movie_scroll::hide(QString genre){
+    if(movie.get_genre().contains(genre)) return;
+    QWidget::hide();
+}
+void movie_scroll::hide(int year){
+    if(movie.get_year() == year) return;
+    QWidget::hide();
+}
+
+
+void movie_scroll::show(){
+    QWidget::show();
+}
+void movie_scroll::show(QString genre, int year){
+    if(movie.get_genre().contains(genre) && movie.get_year() == year) QWidget::show();
+    return;
+}
+void movie_scroll::show(QString genre){
+    if(movie.get_genre().contains(genre)) QWidget::show();
+    return;
+}
+void movie_scroll::show(int year){
+    if(movie.get_year() == year) QWidget::show();
+    return;
+}
