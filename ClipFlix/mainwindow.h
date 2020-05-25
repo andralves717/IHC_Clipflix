@@ -6,6 +6,7 @@
 #include "movie.h"
 #include "serie.h"
 #include "music.h"
+#include "cards.h"
 
 namespace Ui {
 class MainWindow;

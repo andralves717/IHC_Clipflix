@@ -73,82 +73,88 @@ User Data::get_active_user(){
     return this->active_user;
 }
 
-bool Data::add_fav_user(QString username, Movie m){
-    int index = this->users.size();
-    foreach (User u, this->users) {
-        if(u.get_username() == username){
-            index = this->users.indexOf(u);
-            if(u.add_fav_movie(m))
-                this->users.replace(index, u);
-            else return false;
+bool Data::add_fav_user(Movie m){
+    if(this->active_user.add_fav_movie(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
         }
+        return !(index == this->users.size());
     }
-    if(index == this->users.size()) return false;
-    return true;
+    return false;
 }
-bool Data::add_fav_user(QString username, Serie s){
-    int index = this->users.size();
-    foreach (User u, this->users) {
-        if(u.get_username() == username){
-            index = this->users.indexOf(u);
-            if(u.add_fav_serie(s))
-                this->users.replace(index, u);
-            else return false;
+bool Data::add_fav_user(Serie s){
+    if(this->active_user.add_fav_serie(s)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
         }
+        return !(index == this->users.size());
     }
-    if(index == this->users.size()) return false;
-    return true;
+    return false;
 }
-bool Data::add_fav_user(QString username, Music m){
-    int index = this->users.size();
-    foreach (User u, this->users) {
-        if(u.get_username() == username){
-            index = this->users.indexOf(u);
-            if(u.add_fav_music(m))
-                this->users.replace(index, u);
-            else return false;
+bool Data::add_fav_user(Music m){
+    if(this->active_user.add_fav_music(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
         }
+        return !(index == this->users.size());
     }
-    if(index == this->users.size()) return false;
-    return true;
+    return false;
 }
 
-bool Data::rm_fav_user(QString username, Movie m){
-    int index = this->users.size();
-    foreach (User u, this->users) {
-        if(u.get_username() == username){
-            index = this->users.indexOf(u);
-            if(u.rm_fav_movie(m))
-                this->users.replace(index, u);
-            else return false;
+bool Data::rm_fav_user(Movie m){
+    if(this->active_user.rm_fav_movie(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
         }
+        return !(index == this->users.size());
     }
-    if(index == this->users.size()) return false;
-    return true;
+    return false;
 }
-bool Data::rm_fav_user(QString username, Serie s){
-    int index = this->users.size();
-    foreach (User u, this->users) {
-        if(u.get_username() == username){
-            index = this->users.indexOf(u);
-            if(u.rm_fav_serie(s))
-                this->users.replace(index, u);
-            else return false;
+bool Data::rm_fav_user(Serie s){
+    if(this->active_user.rm_fav_serie(s)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
         }
+        return !(index == this->users.size());
     }
-    if(index == this->users.size()) return false;
-    return true;
+    return false;
 }
-bool Data::rm_fav_user(QString username, Music m){
-    int index = this->users.size();
-    foreach (User u, this->users) {
-        if(u.get_username() == username){
-            index = this->users.indexOf(u);
-            if(u.rm_fav_music(m))
-                this->users.replace(index, u);
-            else return false;
+bool Data::rm_fav_user(Music m){
+    if(this->active_user.rm_fav_music(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
         }
+        return !(index == this->users.size());
     }
-    if(index == this->users.size()) return false;
-    return true;
+    return false;
 }

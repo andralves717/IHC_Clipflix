@@ -39,12 +39,12 @@ void serie_scroll::mousePressEvent ( QMouseEvent * event ) {
 void serie_scroll::on_addFav_clicked()
 {
     if(ui->addFav->text()=="Add Favourite"){
-        if(data_serie->add_fav_user("demo",this->serie)){
+        if(data_serie->add_fav_user(this->serie)){
             qDebug() << "Adicionado "+ serie.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Favourite");
         }
     } else {
-        if(data_serie->rm_fav_user("demo",this->serie)){
+        if(data_serie->rm_fav_user(this->serie)){
             qDebug() << "Removido "+ serie.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Add Favourite");
         }

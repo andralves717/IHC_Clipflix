@@ -30,13 +30,13 @@ public:
     QList<Music> get_musics();
     User get_active_user();
 
-    bool add_fav_user(QString username, Movie m);
-    bool add_fav_user(QString username, Serie s);
-    bool add_fav_user(QString username, Music m);
+    bool add_fav_user(Movie m);
+    bool add_fav_user(Serie s);
+    bool add_fav_user(Music m);
 
-    bool rm_fav_user(QString username, Movie m);
-    bool rm_fav_user(QString username, Serie s);
-    bool rm_fav_user(QString username, Music m);
+    bool rm_fav_user(Movie m);
+    bool rm_fav_user(Serie s);
+    bool rm_fav_user(Music m);
 
 
 private:

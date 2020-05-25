@@ -37,12 +37,12 @@ void music_scroll::mousePressEvent ( QMouseEvent * event ) {
 void music_scroll::on_addFav_clicked()
 {
     if(ui->addFav->text()=="Add Favourite"){
-        if(data_music->add_fav_user("demo",this->music)){
+        if(data_music->add_fav_user(this->music)){
             qDebug() << "Adicionado "+ music.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Favourite");
         }
     } else {
-        if(data_music->rm_fav_user("demo",this->music)){
+        if(data_music->rm_fav_user(this->music)){
             qDebug() << "Removido "+ music.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Add Favourite");
         }

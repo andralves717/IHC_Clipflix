@@ -79,6 +79,19 @@ MainWindow::MainWindow(QWidget *parent) :
     List *musics = new List(this, 2, d);
     ui->musics_layout->addWidget(musics);
 
+    foreach (Movie m, u.get_fav_movie()) {
+        cards *c = new cards(this,&m);
+        ui->fav_movie_scroll->addWidget(c);
+    }
+    foreach (Serie s, u.get_fav_serie()) {
+        cards *c = new cards(this,&s);
+        ui->fav_serie_scroll->addWidget(c);
+    }
+    foreach (Music m, u.get_fav_music()) {
+        cards *c = new cards(this,&m);
+        ui->fav_music_scroll->addWidget(c);
+    }
+
 }
 
 MainWindow::~MainWindow()
@@ -148,6 +161,28 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_pushButton_1_clicked()
 {
      ui->tabWidget->setCurrentIndex(4);
+     /*
+     foreach (cards c, ui->fav_movie_scroll_cnt->findChildren<cards>()) {
+
+     }
+     foreach (Movie m, da->get_active_user().get_fav_movie()) {
+         cards *c = new cards(this,&m);
+         if(!ui->fav_movie_scroll_cnt->findChildren<cards>().contains(*c)){
+            ui->fav_movie_scroll->addWidget(c);
+         }
+     }
+     foreach (Serie s, da->get_active_user().get_fav_serie()) {
+         cards *c = new cards(this,&s);
+         if(!ui->fav_serie_scroll_cnt->findChildren<cards>().contains(*c)){
+            ui->fav_serie_scroll->addWidget(c);
+         }
+     }
+     foreach (Music m, da->get_active_user().get_fav_music()) {
+         cards *c = new cards(this,&m);
+         if(!ui->fav_music_scroll_cnt->findChildren<cards>().contains(*c))
+            ui->fav_music_scroll->addWidget(c);
+     }
+     */
 }
 
 

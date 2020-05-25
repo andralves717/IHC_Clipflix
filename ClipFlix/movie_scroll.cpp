@@ -35,12 +35,12 @@ void movie_scroll::mousePressEvent ( QMouseEvent * event ) {
 void movie_scroll::on_addFav_clicked()
 {
     if(ui->addFav->text()=="Add Favourite"){
-        if(data_movie->add_fav_user("demo",this->movie)){
+        if(data_movie->add_fav_user(this->movie)){
             qDebug() << "Adicionado "+ movie.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Favourite");
         }
     } else {
-        if(data_movie->rm_fav_user("demo",this->movie)){
+        if(data_movie->rm_fav_user(this->movie)){
             qDebug() << "Removido "+ movie.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Add Favourite");
         }
