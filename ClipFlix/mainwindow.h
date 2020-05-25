@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "login.h"
 #include "movie.h"
 #include "serie.h"
 #include "music.h"
@@ -20,7 +19,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0, Data *d = new Data());
     ~MainWindow();
 
     QList<Movie> movie_list();
@@ -61,7 +60,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-    login *l;
+    Data *d;
 };
 
 #endif // MAINWINDOW_H

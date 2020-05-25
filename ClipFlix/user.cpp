@@ -74,6 +74,9 @@ bool User::rm_fav_music(const Music music){
 QString User::get_username(){
     return this->_username;
 }
+QString User::get_password(){
+    return this->_password;
+}
 QList<Movie> User::get_fav_movie(){
     return this->_fav_movie;
 }
