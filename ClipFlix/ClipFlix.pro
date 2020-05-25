@@ -26,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         cards.cpp \
         data.cpp \
+        favourite.cpp \
         list.cpp \
         login.cpp \
         main.cpp \
@@ -41,6 +42,7 @@ SOURCES += \
 HEADERS += \
         cards.h \
         data.h \
+        favourite.h \
         list.h \
         login.h \
         mainwindow.h \
@@ -54,6 +56,7 @@ HEADERS += \
 
 FORMS += \
         cards.ui \
+        favourite.ui \
         list.ui \
         login.ui \
         mainwindow.ui \

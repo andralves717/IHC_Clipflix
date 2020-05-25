@@ -69,8 +69,8 @@ QList<Music> Data::get_musics(){
     return this->musics;
 }
 
-User Data::get_active_user(){
-    return this->active_user;
+User *Data::get_active_user(){
+    return &this->active_user;
 }
 
 bool Data::add_fav_user(Movie m){

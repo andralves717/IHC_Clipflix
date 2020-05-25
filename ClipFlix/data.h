@@ -28,7 +28,7 @@ public:
     QList<Movie> get_movies();
     QList<Serie> get_series();
     QList<Music> get_musics();
-    User get_active_user();
+    User *get_active_user();
 
     bool add_fav_user(Movie m);
     bool add_fav_user(Serie s);

@@ -4,10 +4,9 @@
 #include <QPixmap>
 #include <QRadioButton>
 #include <QDebug>
-#include "list.h"
-#include "data.h"
 
 Data *da;
+favourite *fav_page;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -79,18 +78,10 @@ MainWindow::MainWindow(QWidget *parent) :
     List *musics = new List(this, 2, d);
     ui->musics_layout->addWidget(musics);
 
-    foreach (Movie m, u.get_fav_movie()) {
-        cards *c = new cards(this,&m);
-        ui->fav_movie_scroll->addWidget(c);
-    }
-    foreach (Serie s, u.get_fav_serie()) {
-        cards *c = new cards(this,&s);
-        ui->fav_serie_scroll->addWidget(c);
-    }
-    foreach (Music m, u.get_fav_music()) {
-        cards *c = new cards(this,&m);
-        ui->fav_music_scroll->addWidget(c);
-    }
+    fav_page = new favourite(this,da->get_active_user());
+    ui->fav_layout->addWidget(fav_page);
+
+
 
 }
 
@@ -160,29 +151,8 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_1_clicked()
 {
-     ui->tabWidget->setCurrentIndex(4);
-     /*
-     foreach (cards c, ui->fav_movie_scroll_cnt->findChildren<cards>()) {
-
-     }
-     foreach (Movie m, da->get_active_user().get_fav_movie()) {
-         cards *c = new cards(this,&m);
-         if(!ui->fav_movie_scroll_cnt->findChildren<cards>().contains(*c)){
-            ui->fav_movie_scroll->addWidget(c);
-         }
-     }
-     foreach (Serie s, da->get_active_user().get_fav_serie()) {
-         cards *c = new cards(this,&s);
-         if(!ui->fav_serie_scroll_cnt->findChildren<cards>().contains(*c)){
-            ui->fav_serie_scroll->addWidget(c);
-         }
-     }
-     foreach (Music m, da->get_active_user().get_fav_music()) {
-         cards *c = new cards(this,&m);
-         if(!ui->fav_music_scroll_cnt->findChildren<cards>().contains(*c))
-            ui->fav_music_scroll->addWidget(c);
-     }
-     */
+    ui->tabWidget->setCurrentIndex(4);
+    fav_page->refresh();
 }
 
 

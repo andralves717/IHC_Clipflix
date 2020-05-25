@@ -7,6 +7,9 @@
 #include "serie.h"
 #include "music.h"
 #include "cards.h"
+#include "list.h"
+#include "data.h"
+#include "favourite.h"
 
 namespace Ui {
 class MainWindow;
