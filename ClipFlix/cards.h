@@ -5,6 +5,7 @@
 #include "movie.h"
 #include "serie.h"
 #include "music.h"
+#include "scrolltext.h"
 
 namespace Ui {
 class cards;
@@ -24,6 +25,7 @@ public:
 
 private:
     Ui::cards *ui;
+    ScrollText *scroll_title;
 };
 
 #endif // CARDS_H

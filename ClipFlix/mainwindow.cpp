@@ -19,10 +19,13 @@ MainWindow::MainWindow(QWidget *parent) :
 
     User u("demo","demo");
     Data *d = new Data();
+    QList<Movie> movies_list = movie_list();
+    QList<Serie> series_list = serie_list();
+    QList<Music> musics_list = music_list();
     d->add_user(u);
-    d->set_movies(movie_list());
-    d->set_series(serie_list());
-    d->set_musics(music_list());
+    d->set_movies(movies_list);
+    d->set_series(series_list);
+    d->set_musics(musics_list);
     d->set_active_user(u);
 
     da = d;
@@ -34,43 +37,28 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->pushButton_4->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_5->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;color:rgb(0,188,212);} QPushButton:hover {color: rgb(0,188,212);}");
 
-    //Movies Tab
+    // Recommended Movies
 
-    QLabel *movie_label[3];
-    QPixmap mo_pic[3];
-    for (int i=0;i<(int) (sizeof(mo_pic)/sizeof(QPixmap));i++) {
-        movie_label[i] = new QLabel(this);
-        mo_pic[i].load(":/images/image/movie_"+QString::number(i+1)+".jpg");
-        mo_pic[i] = mo_pic[i].scaledToHeight(200,Qt::SmoothTransformation);
-        movie_label[i]->setPixmap(mo_pic[i]);
-        ui->home_movies_scroll->addWidget(movie_label[i]);
+    foreach (Movie m, movies_list) {
+        cards *c = new cards(this,&m);
+        ui->home_movies_scroll->addWidget(c);
     }
 
-    // Series Tab
+    // Recommended Series
 
-    QLabel *serie_label[4];
-    QPixmap s_pic[4];
-    for (int i=0;i<(int) (sizeof(s_pic)/sizeof(QPixmap));i++) {
-        serie_label[i] = new QLabel(this);
-        s_pic[i].load(":/images/image/series_"+QString::number(i+1)+".jpg");
-        s_pic[i] = s_pic[i].scaledToHeight(200,Qt::SmoothTransformation);
-        serie_label[i]->setPixmap(s_pic[i]);
-        ui->home_series_scroll->addWidget(serie_label[i]);
-
+    foreach (Serie m, series_list) {
+        cards *c = new cards(this,&m);
+        ui->home_series_scroll->addWidget(c);
     }
 
-    // Music Tab
+    // Recommended Musics
 
-    QLabel *music_label[3];
-    QPixmap m_pic[3];
-    for (int i=0;i<(int) (sizeof(m_pic)/sizeof(QPixmap));i++) {
-        music_label[i] = new QLabel(this);
-        m_pic[i].load(":/images/image/music_"+QString::number(i+1)+".jpg");
-        m_pic[i] = m_pic[i].scaledToHeight(200,Qt::SmoothTransformation);
-        music_label[i]->setPixmap(m_pic[i]);
-        ui->home_music_scroll->addWidget(music_label[i]);
-
+    foreach (Music m, musics_list) {
+        cards *c = new cards(this,&m);
+        ui->home_music_scroll->addWidget(c);
     }
+
+
     List *movies = new List(this, 0, d);
     ui->movies_layout->addWidget(movies);
     List *series = new List(this, 1, d);
@@ -215,7 +203,6 @@ QList<Movie> MainWindow::movie_list(){
 
     return ret;
 }
-
 QList<Serie> MainWindow::serie_list(){
     QList<Serie> ret;
     //La Casa de Papel

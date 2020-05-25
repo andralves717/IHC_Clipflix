@@ -35,6 +35,7 @@ SOURCES += \
         movie_scroll.cpp \
         music.cpp \
         music_scroll.cpp \
+        scrolltext.cpp \
         serie.cpp \
         serie_scroll.cpp \
         user.cpp
@@ -50,6 +51,7 @@ HEADERS += \
         movie_scroll.h \
         music.h \
         music_scroll.h \
+        scrolltext.h \
         serie.h \
         serie_scroll.h \
         user.h
