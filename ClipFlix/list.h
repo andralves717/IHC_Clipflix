@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include "data.h"
-#include "movie.h"
 
 namespace Ui {
 class List;

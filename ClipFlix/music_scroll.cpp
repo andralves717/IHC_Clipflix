@@ -2,6 +2,7 @@
 #include "ui_music_scroll.h"
 #include <QMouseEvent>
 #include <QDebug>
+#include "watch_music.h"
 
 Data *data_music;
 
@@ -31,6 +32,8 @@ music_scroll::~music_scroll()
 void music_scroll::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
         qDebug() << this->ui->title->text();
+        watch_music wm(this,music);
+        wm.exec();
     }
 }
 

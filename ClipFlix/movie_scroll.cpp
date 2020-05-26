@@ -2,6 +2,7 @@
 #include "ui_movie_scroll.h"
 #include <QMouseEvent>
 #include <QDebug>
+#include "watch_movie.h"
 
 Data *data_movie;
 
@@ -28,7 +29,8 @@ movie_scroll::~movie_scroll()
 
 void movie_scroll::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
-        qDebug() << this->ui->title->text();
+        watch_movie wm(this,movie);
+        wm.exec();
     }
 }
 

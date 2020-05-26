@@ -5,6 +5,9 @@
 #include <QRadioButton>
 #include <QDebug>
 
+//#include <QMediaPlayer>
+//#include <QVideoWidget>
+
 favourite *fav_page;
 
 MainWindow::MainWindow(QWidget *parent, Data *data) :
@@ -27,21 +30,21 @@ MainWindow::MainWindow(QWidget *parent, Data *data) :
     // Recommended Movies
 
     foreach (Movie m, d->get_movies()) {
-        cards *c = new cards(this,&m);
+        cards *c = new cards(this,&m,0);
         ui->home_movies_scroll->addWidget(c);
     }
 
     // Recommended Series
 
     foreach (Serie m, d->get_series()) {
-        cards *c = new cards(this,&m);
+        cards *c = new cards(this,&m,1);
         ui->home_series_scroll->addWidget(c);
     }
 
     // Recommended Musics
 
     foreach (Music m, d->get_musics()) {
-        cards *c = new cards(this,&m);
+        cards *c = new cards(this,&m,2);
         ui->home_music_scroll->addWidget(c);
     }
 
@@ -56,8 +59,13 @@ MainWindow::MainWindow(QWidget *parent, Data *data) :
     fav_page = new favourite(this,d->get_active_user());
     ui->fav_layout->addWidget(fav_page);
 
-
-
+//    QVideoWidget *video = new QVideoWidget(this);
+//    QMediaPlayer *player = new QMediaPlayer;
+//    player->setMedia(QUrl(":/tmp/videos/rato.mp4"));
+//    player->setVideoOutput(video);
+//    video->show();
+//    player->play();
+//    ui->movies_layout->addWidget(video);
 }
 
 MainWindow::~MainWindow()

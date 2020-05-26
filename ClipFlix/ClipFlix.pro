@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui #multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -38,7 +38,10 @@ SOURCES += \
         scrolltext.cpp \
         serie.cpp \
         serie_scroll.cpp \
-        user.cpp
+        user.cpp \
+        watch_movie.cpp \
+        watch_music.cpp \
+        watch_serie.cpp
 
 HEADERS += \
         cards.h \
@@ -54,7 +57,10 @@ HEADERS += \
         scrolltext.h \
         serie.h \
         serie_scroll.h \
-        user.h
+        user.h \
+        watch_movie.h \
+        watch_music.h \
+        watch_serie.h
 
 FORMS += \
         cards.ui \
@@ -64,7 +70,10 @@ FORMS += \
         mainwindow.ui \
         movie_scroll.ui \
         music_scroll.ui \
-        serie_scroll.ui
+        serie_scroll.ui \
+        watch_movie.ui \
+        watch_music.ui \
+        watch_serie.ui
 
 
 # Default rules for deployment.

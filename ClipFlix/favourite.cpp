@@ -9,15 +9,15 @@ favourite::favourite(QWidget *parent, User *u) :
     user = u;
 
     foreach (Movie m, user->get_fav_movie()) {
-        cards *c = new cards(this,&m);
+        cards *c = new cards(this,&m,0);
         ui->fav_movie_scroll->addWidget(c);
     }
     foreach (Serie s, user->get_fav_serie()) {
-        cards *c = new cards(this,&s);
+        cards *c = new cards(this,&s,1);
         ui->fav_serie_scroll->addWidget(c);
     }
     foreach (Music m, user->get_fav_music()) {
-        cards *c = new cards(this,&m);
+        cards *c = new cards(this,&m,2);
         ui->fav_music_scroll->addWidget(c);
     }
 }

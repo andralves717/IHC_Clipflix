@@ -22,11 +22,11 @@ public:
     bool set_fav_serie(QList<Serie> fav_series);
     bool set_fav_music(QList<Music> fav_musics);
 
-    bool add_fav_movie(Movie movie);
+    bool add_fav_movie(Movie movies);
     bool add_fav_serie(Serie serie);
     bool add_fav_music(Music music);
 
-    bool rm_fav_movie(Movie movie);
+    bool rm_fav_movie(Movie movies);
     bool rm_fav_serie(Serie serie);
     bool rm_fav_music(Music music);
 

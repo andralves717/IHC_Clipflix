@@ -2,6 +2,7 @@
 #include "ui_serie_scroll.h"
 #include <QMouseEvent>
 #include <QDebug>
+#include "watch_serie.h"
 
 Data *data_serie;
 
@@ -33,6 +34,8 @@ serie_scroll::~serie_scroll()
 void serie_scroll::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
         qDebug() << this->ui->title->text();
+        watch_serie wm(this,serie);
+        wm.exec();
     }
 }
 
