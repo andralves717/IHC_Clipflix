@@ -18,7 +18,7 @@ movie_scroll::movie_scroll(QWidget *parent, Movie m, Data *d) :
     ui->year->setText(QString::number(m.get_year()));
     ui->image->setPixmap(m.get_image());
     ui->duration->setText(QString::number(m.get_duration())+" minutes");
-    ui->rating->setText(QString::number((double)m.get_rating()/10)+"/10");
+    ui->rating->setText("⭐ "+QString::number((double)m.get_rating()/10)+"/10");
     ui->genre->setText("Genre: "+m.get_genre_string());
 }
 

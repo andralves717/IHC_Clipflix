@@ -14,7 +14,10 @@ serie_scroll::serie_scroll(QWidget *parent, Serie s, Data *d) :
     data_serie = d;
     serie = s;
     QString years = "("+QString::number(s.get_years().constFirst())+"-";
-    if(s.finished()) years + QString::number(s.get_years().constLast()) + ")";
+    if(s.finished()){
+        if(s.get_seasons() == 1) years = QString::number(s.get_years().constFirst());
+        else years += QString::number(s.get_years().constLast()) + ")";
+    }
     else years + ")";
 
     ui->title->setTextFormat(Qt::RichText);
@@ -22,7 +25,7 @@ serie_scroll::serie_scroll(QWidget *parent, Serie s, Data *d) :
     ui->year->setText(years);
     ui->image->setPixmap(s.get_image());
     ui->duration->setText(QString::number(s.get_seasons())+" seasons");
-    ui->rating->setText(QString::number((double)s.get_rating()/10)+"/10");
+    ui->rating->setText("⭐ "+QString::number((double)s.get_rating()/10)+"/10");
     ui->genre->setText("Genre: "+s.get_genre_string());
 }
 

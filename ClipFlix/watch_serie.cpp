@@ -13,7 +13,10 @@ watch_serie::watch_serie(QWidget *parent, Serie mw, Data *d) :
 
     this->serie_watch = mw;
     QString years = "("+QString::number(serie_watch.get_years().constFirst())+"-";
-    if(serie_watch.finished()) years + QString::number(serie_watch.get_years().constLast()) + ")";
+    if(serie_watch.finished()){
+        if(serie_watch.get_seasons() == 1) years = QString::number(serie_watch.get_years().constFirst());
+        else years += QString::number(serie_watch.get_years().constLast()) + ")";
+    }
     else years + ")";
     ui->title->setTextFormat(Qt::RichText);
     ui->title->setText("<html><head/><body><p><span style=\" font-size:25pt;\">"+serie_watch.get_title()+"</span></p></body></html>");

@@ -4,12 +4,15 @@
         <file>image/music_1.jpg</file>
         <file>image/music_2.jpg</file>
         <file>image/music_3.jpg</file>
-        <file>image/movie_1.jpg</file>
-        <file>image/movie_2.jpg</file>
-        <file>image/movie_3.jpg</file>
         <file>image/series_1.jpg</file>
         <file>image/series_2.jpg</file>
         <file>image/series_3.jpg</file>
         <file>image/series_4.jpg</file>
+        <file>image/movie_1.jpg</file>
+        <file>image/movie_2.jpg</file>
+        <file>image/movie_3.jpg</file>
+    </qresource>
+    <qresource prefix="/tmp">
+        <file>videos/rato.mp4</file>
     </qresource>
 </RCC>

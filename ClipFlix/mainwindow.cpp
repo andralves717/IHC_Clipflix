@@ -27,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent, Data *data) :
     ui->pushButton_4->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_5->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;color:rgb(0,188,212);} QPushButton:hover {color: rgb(0,188,212);}");
 
+    QPixmap icon(":/images/image/logo.png");
+    icon = icon.scaledToHeight(70);
+    ui->icon->setPixmap(icon);
+
     // Recommended Movies
 
     foreach (Movie m, d->get_movies()) {
