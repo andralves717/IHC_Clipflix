@@ -1,6 +1,7 @@
 #include "list.h"
 #include "ui_list.h"
 #include <QRadioButton>
+#include <QCheckBox>
 #include "movie_scroll.h"
 #include "serie_scroll.h"
 #include "music_scroll.h"
@@ -13,7 +14,7 @@ List::List(QWidget *parent, int type, Data *d) :
     ui->setupUi(this);
     t=type;
     QVBoxLayout *vbox_genre = new QVBoxLayout;
-    QRadioButton *genre[9];
+    QCheckBox *genre_check[9];
     QStringList genre_tex;
     switch(type){
         case 0:
@@ -27,31 +28,33 @@ List::List(QWidget *parent, int type, Data *d) :
     }
 
     for (int i=0; i<genre_tex.size();i++){
-        genre[i] = new QRadioButton(this);
-        genre[i]->setText(genre_tex.at(i));
-        vbox_genre->addWidget(genre[i]);
+        genre_check[i] = new QCheckBox(this);
+        genre_check[i]->setText(genre_tex.at(i));
+        vbox_genre->addWidget(genre_check[i]);
+        connect(genre_check[i],SIGNAL(stateChanged(int)),this ,SLOT(set_filters()));
     }
     ui->group_genre->setLayout(vbox_genre);
 
     if(type <2){
         QVBoxLayout *vbox_year = new QVBoxLayout;
-        QRadioButton *year[10];
+        QCheckBox *year[10];
 
         for (int i=0; i<10;i++){
-            year[i] = new QRadioButton(this);
+            year[i] = new QCheckBox(this);
             year[i]->setText(QString::number(2020-i));
             vbox_year->addWidget(year[i]);
+            connect(year[i],SIGNAL(stateChanged(int)),this ,SLOT(set_filters()));
         }
         ui->group_year->setLayout(vbox_year);
     } else {
         QVBoxLayout *vbox_years = new QVBoxLayout;
-        QRadioButton *years[5];
+        QCheckBox *years[5];
 
         for (int i=0;i<5;i++) {
-            years[i] = new QRadioButton(this);
+            years[i] = new QCheckBox(this);
             years[i]->setText(QString::number((202-i)*10)+"'s");
             vbox_years->addWidget(years[i]);
-
+            connect(years[i],SIGNAL(stateChanged(int)),this ,SLOT(set_filters()));
         }
         ui->group_year->setLayout(vbox_years);
     }
@@ -89,14 +92,14 @@ List::~List()
 
 void List::on_clear_clicked()
 {
-    foreach (QRadioButton *genre_object, ui->group_genre->findChildren<QRadioButton *>()) {
+    foreach (QCheckBox *genre_object, ui->group_genre->findChildren<QCheckBox *>()) {
         if(genre_object->isChecked()){
             genre_object->setAutoExclusive(false);
             genre_object->setChecked(false);
             genre_object->setAutoExclusive(true);
         }
     }
-    foreach (QRadioButton *year_object, ui->group_year->findChildren<QRadioButton *>()) {
+    foreach (QCheckBox *year_object, ui->group_year->findChildren<QCheckBox *>()) {
         if(year_object->isChecked()){
             year_object->setAutoExclusive(false);
             year_object->setChecked(false);
@@ -224,4 +227,116 @@ void List::on_pushButton_clicked()
                 break;
         }
     }
+}
+
+void List::set_filters(){
+    QStringList genre;
+    QList<int> year;
+    foreach(QCheckBox *genre_object, ui->group_genre->findChildren<QCheckBox *>()){
+        if(genre_object->isChecked()){
+            qDebug()<<"isto na da";
+            genre.append(genre_object->text());
+        }
+    }
+    foreach(QCheckBox *year_object, ui->group_year->findChildren<QCheckBox *>()){
+        if(year_object->isChecked()){
+            if(t<2) year.append(year_object->text().toInt());
+            else {
+                QString tmp = year_object->text();
+                tmp.chop(2);
+                year.append(tmp.toInt());
+            }
+        }
+    }
+
+    qDebug() << "inicio "+QString::number(t);
+    qDebug() << "Genre size: " + QString::number(genre.size());
+    qDebug() << "Year size: " + QString::number(year.size());
+
+    if(genre.isEmpty() && year.isEmpty()) {
+        switch (t) {
+            case 0:
+                foreach(movie_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<movie_scroll *>()){
+                    ms->show();
+                }
+                break;
+            case 1:
+                foreach(serie_scroll *ss, ui->scrollAreaWidgetContents_4->findChildren<serie_scroll *>()){
+                    ss->show();
+                }
+                break;
+            case 2:
+                foreach(music_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<music_scroll *>()){
+                    ms->show();
+                }
+                break;
+        }
+    } else if (genre.isEmpty() && !(year.isEmpty())) {
+        qDebug() << "olá amores";
+        switch (t) {
+            case 0:
+                foreach(movie_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<movie_scroll *>()){
+                    ms->show();
+                    ms->hide(year);
+                }
+                break;
+            case 1:
+                foreach(serie_scroll *ss, ui->scrollAreaWidgetContents_4->findChildren<serie_scroll *>()){
+                    ss->show();
+                    ss->hide(year);
+                }
+                break;
+            case 2:
+                foreach(music_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<music_scroll *>()){
+                    ms->show();
+                    ms->hide(year);
+                }
+                break;
+        }
+    } else if ((!genre.isEmpty()) && year.isEmpty()) {
+        switch (t) {
+            case 0:
+                foreach(movie_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<movie_scroll *>()){
+                    ms->show();
+                    ms->hide(genre);
+                }
+                break;
+            case 1:
+                foreach(serie_scroll *ss, ui->scrollAreaWidgetContents_4->findChildren<serie_scroll *>()){
+                    ss->show();
+                    ss->hide(genre);
+                }
+                break;
+            case 2:
+                foreach(music_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<music_scroll *>()){
+                    ms->show();
+                    ms->hide(genre);
+                }
+                break;
+        }
+
+    } else {
+        switch (t) {
+            case 0:
+                foreach(movie_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<movie_scroll *>()){
+                    ms->show();
+                    ms->hide(genre, year);
+                }
+                break;
+            case 1:
+                foreach(serie_scroll *ss, ui->scrollAreaWidgetContents_4->findChildren<serie_scroll *>()){
+                    ss->show();
+                    ss->hide(genre, year);
+                }
+                break;
+            case 2:
+                foreach(music_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<music_scroll *>()){
+                    ms->show();
+                    ms->hide(genre, year);
+                }
+                break;
+        }
+    }
+
+
 }

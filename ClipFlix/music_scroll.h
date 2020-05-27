@@ -27,6 +27,14 @@ public:
     void show(QString genre);
     void show(int year);
 
+    void hide(QStringList genre_lst, QList<int> years);
+    void hide(QList<int> years);
+    void hide(QStringList genre_lst);
+
+    void show(QStringList genre_lst, QList<int> years);
+    void show(QStringList genre_lst);
+    void show(QList<int> years);
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 

@@ -18,8 +18,7 @@ watch_music::watch_music(QWidget *parent, Music mw, Data *d) :
     ui->image->setPixmap(music_watch.get_image());
     ui->album->setText("Album: "+music_watch.get_album());
     ui->rating->setText(music_watch.get_author());
-    ui->timeEdit->setTime(music_watch.get_duration());
-    ui->timeEdit->setDisabled(true);
+    ui->time_label->setText(mw.get_duration().toString("mm:ss") + " minutes");
     this->setWindowTitle("Watch "+music_watch.get_title());
 
 }

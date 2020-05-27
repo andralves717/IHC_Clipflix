@@ -21,6 +21,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void set_filters();
+
 private:
     Ui::List *ui;
     int t;
