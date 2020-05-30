@@ -17,6 +17,8 @@ public:
     explicit serie_scroll(QWidget *parent = nullptr, Serie s = Serie(), Data *d = nullptr);
     ~serie_scroll();
 
+    void refresh();
+
     void hide();
     void hide(QString genre, int year);
     void hide(int year);

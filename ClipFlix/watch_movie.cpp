@@ -19,6 +19,7 @@ watch_movie::watch_movie(QWidget *parent, Movie mw, Data *d) :
     ui->rating->setText("⭐ "+QString::number((double)movie_watch.get_rating()/10)+"/10");
     ui->Duration->setText(QString::number(movie_watch.get_duration())+" minutes");
     this->setWindowTitle("Watch "+movie_watch.get_title());
+    if(d->is_fav_user(this->movie_watch)) ui->addFav->setText("Favourite");
 }
 
 watch_movie::~watch_movie()
@@ -36,7 +37,7 @@ void watch_movie::on_addFav_clicked()
     } else {
         if(data_watch_m->rm_fav_user(this->movie_watch)){
             qDebug() << "Removido "+ movie_watch.get_title()+" aos favoritos com sucesso!";
-            ui->addFav->setText("Add Favourite");
+            ui->addFav->setText("Add to\n Favourite");
         }
     }
 }

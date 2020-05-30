@@ -158,3 +158,13 @@ bool Data::rm_fav_user(Music m){
     }
     return false;
 }
+
+bool Data::is_fav_user(Movie m){
+    return this->active_user.get_fav_movie().contains(m);
+}
+bool Data::is_fav_user(Serie m){
+    return this->active_user.get_fav_serie().contains(m);
+}
+bool Data::is_fav_user(Music m){
+    return this->active_user.get_fav_music().contains(m);
+}

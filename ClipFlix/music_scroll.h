@@ -17,6 +17,8 @@ public:
     explicit music_scroll(QWidget *parent = nullptr, Music m = Music(), Data *d = nullptr);
     ~music_scroll();
 
+    void refresh();
+
     void hide();
     void hide(QString genre, int year);
     void hide(int year);

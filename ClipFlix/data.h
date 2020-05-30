@@ -38,6 +38,10 @@ public:
     bool rm_fav_user(Serie s);
     bool rm_fav_user(Music m);
 
+    bool is_fav_user(Movie m);
+    bool is_fav_user(Serie m);
+    bool is_fav_user(Music m);
+
 
 private:
 

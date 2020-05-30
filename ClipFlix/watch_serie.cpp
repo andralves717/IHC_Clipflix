@@ -26,6 +26,7 @@ watch_serie::watch_serie(QWidget *parent, Serie mw, Data *d) :
     ui->rating->setText("⭐ "+QString::number((double)serie_watch.get_rating()/10)+"/10");
     ui->Duration->setText(QString::number(serie_watch.get_seasons())+" seasons");
     this->setWindowTitle("Watch "+serie_watch.get_title());
+    if(d->is_fav_user(this->serie_watch)) ui->addFav->setText("Favourite");
 }
 
 watch_serie::~watch_serie()

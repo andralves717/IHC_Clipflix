@@ -20,6 +20,7 @@ watch_music::watch_music(QWidget *parent, Music mw, Data *d) :
     ui->rating->setText(music_watch.get_author());
     ui->time_label->setText(mw.get_duration().toString("mm:ss") + " minutes");
     this->setWindowTitle("Watch "+music_watch.get_title());
+    if(d->is_fav_user(this->music_watch)) ui->addFav->setText("Favourite");
 
 }
 

@@ -35,7 +35,7 @@ movie_scroll::movie_scroll(QWidget *parent, Movie m, Data *d) :
     } else genre_string = m.get_genre_string();
     ui->genre->setText("Genre: "+genre_string);
     ui->genre->setFont(font);
-    //if(ui->genre->width())
+    if(data_movie->is_fav_user(this->movie)) ui->addFav->setText("Favourite");
 }
 
 movie_scroll::~movie_scroll()
@@ -43,10 +43,18 @@ movie_scroll::~movie_scroll()
     delete ui;
 }
 
+void movie_scroll::refresh(){
+    if(data_movie->is_fav_user(this->movie)) ui->addFav->setText("Favourite");
+    else ui->addFav->setText("Add\n Favourite");
+}
+
+
 void movie_scroll::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
-        watch_movie wm(this,movie);
+        watch_movie wm(this,movie,data_movie);
         wm.exec();
+        if(data_movie->is_fav_user(this->movie)) ui->addFav->setText("Favourite");
+        else ui->addFav->setText("Add\n Favourite");
     }
 }
 

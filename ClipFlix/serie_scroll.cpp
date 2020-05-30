@@ -42,6 +42,8 @@ serie_scroll::serie_scroll(QWidget *parent, Serie s, Data *d) :
     } else genre_string = s.get_genre_string();
     ui->genre->setText("Genre: "+genre_string);
     ui->genre->setFont(font);
+    if(data_serie->is_fav_user(this->serie)) ui->addFav->setText("Favourite");
+
 }
 
 serie_scroll::~serie_scroll()
@@ -49,11 +51,18 @@ serie_scroll::~serie_scroll()
     delete ui;
 }
 
+void serie_scroll::refresh(){
+    if(data_serie->is_fav_user(this->serie)) ui->addFav->setText("Favourite");
+    else ui->addFav->setText("Add\n Favourite");
+}
+
 void serie_scroll::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
         qDebug() << this->ui->title->text();
-        watch_serie wm(this,serie);
+        watch_serie wm(this,serie,data_serie);
         wm.exec();
+        if(data_serie->is_fav_user(this->serie)) ui->addFav->setText("Favourite");
+        else ui->addFav->setText("Add\n Favourite");
     }
 }
 

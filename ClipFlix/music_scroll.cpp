@@ -30,6 +30,7 @@ music_scroll::music_scroll(QWidget *parent, Music m, Data *d) :
 //    ui->timeEdit->setDisabled(true);
     ui->time_label->setText(m.get_duration().toString("mm:ss") + " minutes");
     ui->time_label->setFont(font);
+    if(data_music->is_fav_user(this->music)) ui->addFav->setText("Favourite");
 }
 
 music_scroll::~music_scroll()
@@ -37,11 +38,18 @@ music_scroll::~music_scroll()
     delete ui;
 }
 
+void music_scroll::refresh(){
+    if(data_music->is_fav_user(this->music)) ui->addFav->setText("Favourite");
+    else ui->addFav->setText("Add\n Favourite");
+}
+
 void music_scroll::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
         qDebug() << this->ui->title->text();
-        watch_music wm(this,music);
+        watch_music wm(this,music,data_music);
         wm.exec();
+        if(data_music->is_fav_user(this->music)) ui->addFav->setText("Favourite");
+        else ui->addFav->setText("Add\n Favourite");
     }
 }
 

@@ -17,6 +17,8 @@ public:
     explicit movie_scroll(QWidget *parent = nullptr, Movie m = Movie(), Data *d = nullptr);
     ~movie_scroll();
 
+    void refresh();
+
     void hide();
     void hide(QString genre, int year);
     void hide(int year);

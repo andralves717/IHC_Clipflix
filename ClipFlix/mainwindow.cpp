@@ -9,6 +9,9 @@
 //#include <QVideoWidget>
 
 favourite *fav_page;
+List *movies;
+List *series;
+List *musics;
 
 MainWindow::MainWindow(QWidget *parent, Data *data) :
     QMainWindow(parent),
@@ -34,33 +37,33 @@ MainWindow::MainWindow(QWidget *parent, Data *data) :
     // Recommended Movies
 
     foreach (Movie m, d->get_movies()) {
-        cards *c = new cards(this,&m,0);
+        cards *c = new cards(this,m,data,0);
         ui->home_movies_scroll->addWidget(c);
     }
 
     // Recommended Series
 
     foreach (Serie m, d->get_series()) {
-        cards *c = new cards(this,&m,1);
+        cards *c = new cards(this,m,data,1);
         ui->home_series_scroll->addWidget(c);
     }
 
     // Recommended Musics
 
     foreach (Music m, d->get_musics()) {
-        cards *c = new cards(this,&m,2);
+        cards *c = new cards(this,m,data,2);
         ui->home_music_scroll->addWidget(c);
     }
 
 
-    List *movies = new List(this, 0, d);
+    movies = new List(this, 0, d);
     ui->movies_layout->addWidget(movies);
-    List *series = new List(this, 1, d);
+    series = new List(this, 1, d);
     ui->series_layout->addWidget(series);
-    List *musics = new List(this, 2, d);
+    musics = new List(this, 2, d);
     ui->musics_layout->addWidget(musics);
 
-    fav_page = new favourite(this,d->get_active_user());
+    fav_page = new favourite(this, this->d);
     ui->fav_layout->addWidget(fav_page);
 
 //    QVideoWidget *video = new QVideoWidget(this);
@@ -98,21 +101,25 @@ void MainWindow::on_actionHome_triggered()
 void MainWindow::on_actionMovies_triggered()
 {
      ui->tabWidget->setCurrentIndex(1);
+     movies->refresh(0);
 }
 
 void MainWindow::on_actionSeries_triggered()
 {
     ui->tabWidget->setCurrentIndex(2);
+    series->refresh(1);
 }
 
 void MainWindow::on_actionMusic_triggered()
 {
     ui->tabWidget->setCurrentIndex(3);
+    musics->refresh(2);
 }
 
 void MainWindow::on_actionFavourite_triggered()
 {
     ui->tabWidget->setCurrentIndex(4);
+    fav_page->refresh();
 }
 
 void MainWindow::on_pushButton_5_clicked()
@@ -123,16 +130,19 @@ void MainWindow::on_pushButton_5_clicked()
 void MainWindow::on_pushButton_4_clicked()
 {
     ui->tabWidget->setCurrentIndex(1);
+    movies->refresh(0);
 }
 
 void MainWindow::on_pushButton_3_clicked()
 {
      ui->tabWidget->setCurrentIndex(2);
+     series->refresh(1);
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
      ui->tabWidget->setCurrentIndex(3);
+     musics->refresh(2);
 }
 
 

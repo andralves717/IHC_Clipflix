@@ -90,6 +90,28 @@ List::~List()
     delete ui;
 }
 
+void List::refresh(int type){
+    switch(type) {
+    case 0:
+        foreach(movie_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<movie_scroll *>()){
+            ms->refresh();
+        }
+        break;
+    case 1:
+        foreach(serie_scroll *ss, ui->scrollAreaWidgetContents_4->findChildren<serie_scroll *>()){
+            ss->refresh();
+        }
+        break;
+    case 2:
+        foreach(music_scroll *ms, ui->scrollAreaWidgetContents_4->findChildren<music_scroll *>()){
+            ms->refresh();
+        }
+        break;
+    }
+
+
+}
+
 void List::on_clear_clicked()
 {
     foreach (QCheckBox *genre_object, ui->group_genre->findChildren<QCheckBox *>()) {

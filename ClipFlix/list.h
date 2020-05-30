@@ -16,6 +16,8 @@ public:
     explicit List(QWidget *parent = nullptr, int type = 0, Data *d = nullptr);
     ~List();
 
+    void refresh(int type = 0);
+
 private slots:
     void on_clear_clicked();
 
