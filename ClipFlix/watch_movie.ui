@@ -370,10 +370,10 @@
              <property name="font">
               <font>
                <family>MS Shell Dlg 2</family>
-               <pointsize>8</pointsize>
-               <weight>50</weight>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
                <italic>false</italic>
-               <bold>false</bold>
+               <bold>true</bold>
               </font>
              </property>
              <property name="styleSheet">
