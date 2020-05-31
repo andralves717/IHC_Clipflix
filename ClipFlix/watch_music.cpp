@@ -1,6 +1,7 @@
 #include "watch_music.h"
 #include "ui_watch_music.h"
 #include <QDebug>
+#include <QGroupBox>
 
 Data *data_watch_mu;
 
@@ -21,6 +22,20 @@ watch_music::watch_music(QWidget *parent, Music mw, Data *d) :
     ui->time_label->setText(mw.get_duration().toString("mm:ss") + " minutes");
     this->setWindowTitle("Watch "+music_watch.get_title());
     if(d->is_fav_user(this->music_watch)) ui->addFav->setText("Favourite");
+    const QSize btnSize = QSize(75, 34);
+    ui->lineEdit->setStyleSheet("QLineEdit{ "
+                                "color:black;"
+                                "background-color:lightgray;"
+                                "border: 2px solid gray;"
+                                "border-radius: 10px;"
+                                "padding: 0 8px;"
+                                "selection-background-color: darkgray;"
+                                "font-size: 16px;}"
+                                "QLineEdit:focus { "
+                                "background-color:lightgray;}");
+    ui->lineEdit->setText("Insira um comentário...");
+    ui->pushButton->setFixedSize(btnSize);
+    ui->pushButton->setIcon(QIcon(":/images/image/facebook.png"));
 
 }
 
@@ -42,4 +57,33 @@ void watch_music::on_addFav_clicked()
             ui->addFav->setText("Add Favourite");
         }
     }
+}
+
+void watch_music::on_lineEdit_returnPressed()
+{
+    QLabel * newLabel = new QLabel();
+    newLabel->setMinimumHeight(20);
+    newLabel->setText(ui->lineEdit->text());
+    QGroupBox * newQGroupBox= new QGroupBox();
+    QVBoxLayout *vbox= new QVBoxLayout;
+    vbox->addWidget(newLabel);
+    newQGroupBox->setTitle("User: demo");
+    newQGroupBox->setStyleSheet("{font: 10pt MS Shell Dlg 2;font-weight: bold;}");
+    newQGroupBox->setMaximumHeight(200);
+    newQGroupBox->setLayout(vbox);
+    ui->verticalLayout_6->addWidget(newQGroupBox);
+}
+
+void watch_music::on_pushButton_2_pressed()
+{
+    QLabel * newLabel = new QLabel();
+    newLabel->setMinimumHeight(20);
+    newLabel->setText(ui->lineEdit->text());
+    QGroupBox * newQGroupBox= new QGroupBox();
+    QVBoxLayout *vbox= new QVBoxLayout;
+    vbox->addWidget(newLabel);
+    newQGroupBox->setTitle("User: demo");
+    newQGroupBox->setMaximumHeight(100);
+    newQGroupBox->setLayout(vbox);
+    ui->verticalLayout_6->addWidget(newQGroupBox);
 }

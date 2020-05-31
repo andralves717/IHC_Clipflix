@@ -20,10 +20,16 @@ public:
 private slots:
     void on_addFav_clicked();
 
+    void on_lineEdit_returnPressed();
+
+    void on_pushButton_2_pressed();
+
+
 private:
     Ui::watch_movie *ui;
 
     Movie movie_watch;
+
 };
 
 #endif // WATCH_MOVIE_H

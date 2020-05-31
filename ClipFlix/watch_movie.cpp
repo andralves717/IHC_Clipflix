@@ -17,6 +17,20 @@ watch_movie::watch_movie(QWidget *parent, Movie mw, Data *d) :
     ui->genre->setText("Genre: "+movie_watch.get_genre_string());
     ui->image->setPixmap(movie_watch.get_image());
     ui->rating->setText("⭐ "+QString::number((double)movie_watch.get_rating()/10)+"/10");
+    ui->lineEdit->setStyleSheet("QLineEdit{ "
+                                "color:black;"
+                                "background-color:lightgray;"
+                                "border: 2px solid gray;"
+                                "border-radius: 10px;"
+                                "padding: 0 8px;"
+                                "selection-background-color: darkgray;"
+                                "font-size: 16px;}"
+                                "QLineEdit:focus { "
+                                "background-color:lightgray;}");
+    ui->lineEdit->setText("Insira um comentário...");
+    const QSize btnSize = QSize(75, 34);
+    ui->pushButton->setFixedSize(btnSize);
+    ui->pushButton->setIcon(QIcon(":/images/image/facebook.png"));
     ui->Duration->setText(QString::number(movie_watch.get_duration())+" minutes");
     this->setWindowTitle("Watch "+movie_watch.get_title());
     if(d->is_fav_user(this->movie_watch)) ui->addFav->setText("Favourite");
@@ -40,4 +54,34 @@ void watch_movie::on_addFav_clicked()
             ui->addFav->setText("Add to\n Favourite");
         }
     }
+}
+
+void watch_movie::on_lineEdit_returnPressed()
+{
+    QLabel * newLabel = new QLabel();
+    newLabel->setMinimumHeight(20);
+    newLabel->setText(ui->lineEdit->text());
+    QGroupBox * newQGroupBox= new QGroupBox();
+    QVBoxLayout *vbox= new QVBoxLayout;
+    vbox->addWidget(newLabel);
+    newQGroupBox->setTitle("User: demo");
+    newQGroupBox->setStyleSheet("{font: 10pt MS Shell Dlg 2;font-weight: bold;}");
+    newQGroupBox->setMaximumHeight(200);
+    newQGroupBox->setLayout(vbox);
+    ui->verticalLayout_4->addWidget(newQGroupBox);
+}
+
+void watch_movie::on_pushButton_2_pressed()
+{
+    QLabel * newLabel = new QLabel();
+    newLabel->setMinimumHeight(20);
+    newLabel->setText(ui->lineEdit->text());
+    QGroupBox * newQGroupBox= new QGroupBox();
+    QVBoxLayout *vbox= new QVBoxLayout;
+    vbox->addWidget(newLabel);
+    newQGroupBox->setTitle("User: demo");
+    newQGroupBox->setStyleSheet("{font: 10pt MS Shell Dlg 2;font-weight: bold;}");
+    newQGroupBox->setMaximumHeight(200);
+    newQGroupBox->setLayout(vbox);
+    ui->verticalLayout_4->addWidget(newQGroupBox);
 }
