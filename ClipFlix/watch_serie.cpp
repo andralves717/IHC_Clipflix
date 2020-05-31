@@ -72,9 +72,10 @@ void watch_serie::on_lineEdit_returnPressed()
     QGroupBox * newQGroupBox= new QGroupBox();
     QVBoxLayout *vbox= new QVBoxLayout;
     vbox->addWidget(newLabel);
-    newQGroupBox->setStyleSheet("{font: 10pt MS Shell Dlg 2;font-weight: bold;}");
     newQGroupBox->setTitle("User: demo");
+    newQGroupBox->setStyleSheet("* {font: 10pt MS Shell Dlg 2;font-weight: bold}");
     newQGroupBox->setMaximumHeight(200);
+    newLabel->setStyleSheet("* {font: 8pt MS Shell Dlg 2}");
     newQGroupBox->setLayout(vbox);
     ui->verticalLayout_4->addWidget(newQGroupBox);
 
@@ -88,9 +89,10 @@ void watch_serie::on_pushButton_2_pressed()
     QGroupBox * newQGroupBox= new QGroupBox();
     QVBoxLayout *vbox= new QVBoxLayout;
     vbox->addWidget(newLabel);
-    newQGroupBox->setStyleSheet("{font: 10pt MS Shell Dlg 2;font-weight: bold;}");
     newQGroupBox->setTitle("User: demo");
+    newQGroupBox->setStyleSheet("* {font: 10pt MS Shell Dlg 2;font-weight: bold}");
     newQGroupBox->setMaximumHeight(200);
+    newLabel->setStyleSheet("* {font: 8pt MS Shell Dlg 2}");
     newQGroupBox->setLayout(vbox);
     ui->verticalLayout_4->addWidget(newQGroupBox);
 

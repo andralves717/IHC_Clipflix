@@ -68,8 +68,9 @@ void watch_music::on_lineEdit_returnPressed()
     QVBoxLayout *vbox= new QVBoxLayout;
     vbox->addWidget(newLabel);
     newQGroupBox->setTitle("User: demo");
-    newQGroupBox->setStyleSheet("{font: 10pt MS Shell Dlg 2;font-weight: bold;}");
+    newQGroupBox->setStyleSheet("* {font: 10pt MS Shell Dlg 2;font-weight: bold}");
     newQGroupBox->setMaximumHeight(200);
+    newLabel->setStyleSheet("* {font: 8pt MS Shell Dlg 2}");
     newQGroupBox->setLayout(vbox);
     ui->verticalLayout_6->addWidget(newQGroupBox);
 }
@@ -83,7 +84,9 @@ void watch_music::on_pushButton_2_pressed()
     QVBoxLayout *vbox= new QVBoxLayout;
     vbox->addWidget(newLabel);
     newQGroupBox->setTitle("User: demo");
-    newQGroupBox->setMaximumHeight(100);
+    newQGroupBox->setStyleSheet("* {font: 10pt MS Shell Dlg 2;font-weight: bold}");
+    newQGroupBox->setMaximumHeight(200);
+    newLabel->setStyleSheet("* {font: 8pt MS Shell Dlg 2}");
     newQGroupBox->setLayout(vbox);
     ui->verticalLayout_6->addWidget(newQGroupBox);
 }
