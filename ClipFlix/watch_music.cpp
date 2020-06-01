@@ -36,6 +36,8 @@ watch_music::watch_music(QWidget *parent, Music mw, Data *d) :
     ui->lineEdit->setText("Insira um comentário...");
     ui->pushButton->setFixedSize(btnSize);
     ui->pushButton->setIcon(QIcon(":/images/image/facebook.png"));
+    if(d->is_fav_user(this->music_watch)) ui->addFav->setText("Favourite");
+    if(d->is_wl_user(this->music_watch)) ui->addWL->setText("Added to\nWatch Later");
 
 }
 
@@ -54,7 +56,22 @@ void watch_music::on_addFav_clicked()
     } else {
         if(data_watch_mu->rm_fav_user(this->music_watch)){
             qDebug() << "Removido "+ music_watch.get_title()+" aos favoritos com sucesso!";
-            ui->addFav->setText("Add Favourite");
+            ui->addFav->setText("Add to\n Favourites");
+        }
+    }
+}
+
+void watch_music::on_addWL_clicked()
+{
+    if(ui->addWL->text()=="Add to\nWatch Later"){
+        if(data_watch_mu->add_wl_user(this->music_watch)){
+            qDebug() << "Adicionado "+ music_watch.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Added to\nWatch Later");
+        }
+    } else {
+        if(data_watch_mu->rm_wl_user(this->music_watch)){
+            qDebug() << "Removido "+ music_watch.get_title()+" do Watch Later com sucesso!";
+            ui->addWL->setText("Add to\nWatch Later");
         }
     }
 }
@@ -90,3 +107,4 @@ void watch_music::on_pushButton_2_pressed()
     newQGroupBox->setLayout(vbox);
     ui->verticalLayout_6->addWidget(newQGroupBox);
 }
+

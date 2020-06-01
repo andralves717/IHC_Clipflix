@@ -42,6 +42,7 @@ protected:
 
 private slots:
     void on_addFav_clicked();
+    void on_addWL_clicked();
 
 private:
     Ui::movie_scroll *ui;

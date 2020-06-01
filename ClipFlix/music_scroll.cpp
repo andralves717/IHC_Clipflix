@@ -30,7 +30,7 @@ music_scroll::music_scroll(QWidget *parent, Music m, Data *d) :
 //    ui->timeEdit->setDisabled(true);
     ui->time_label->setText(m.get_duration().toString("mm:ss") + " minutes");
     ui->time_label->setFont(font);
-    if(data_music->is_fav_user(this->music)) ui->addFav->setText("Favourite");
+    this->refresh();
 }
 
 music_scroll::~music_scroll()
@@ -41,6 +41,8 @@ music_scroll::~music_scroll()
 void music_scroll::refresh(){
     if(data_music->is_fav_user(this->music)) ui->addFav->setText("Favourite");
     else ui->addFav->setText("Add\n Favourite");
+    if(data_music->is_wl_user(this->music)) ui->addFav->setText("Added to\nWatch Later");
+    else ui->addWL->setText("Add\nWatch Later");
 }
 
 void music_scroll::mousePressEvent ( QMouseEvent * event ) {
@@ -48,8 +50,7 @@ void music_scroll::mousePressEvent ( QMouseEvent * event ) {
         qDebug() << this->ui->title->text();
         watch_music wm(this,music,data_music);
         wm.exec();
-        if(data_music->is_fav_user(this->music)) ui->addFav->setText("Favourite");
-        else ui->addFav->setText("Add\n Favourite");
+        this->refresh();
     }
 }
 
@@ -64,6 +65,21 @@ void music_scroll::on_addFav_clicked()
         if(data_music->rm_fav_user(this->music)){
             qDebug() << "Removido "+ music.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Add\n Favourite");
+        }
+    }
+}
+
+void music_scroll::on_addWL_clicked()
+{
+    if(ui->addWL->text()=="Add\nWatch Later"){
+        if(data_music->add_wl_user(this->music)){
+            qDebug() << "Adicionado "+ music.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Added to\nWatch Later");
+        }
+    } else {
+        if(data_music->rm_wl_user(this->music)){
+            qDebug() << "Removido "+ music.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Add\nWatch Later");
         }
     }
 }

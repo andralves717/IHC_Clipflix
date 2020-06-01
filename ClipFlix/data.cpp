@@ -168,3 +168,99 @@ bool Data::is_fav_user(Serie m){
 bool Data::is_fav_user(Music m){
     return this->active_user.get_fav_music().contains(m);
 }
+
+bool Data::add_wl_user(Movie m){
+    if(this->active_user.add_wl_movie(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
+        }
+        return !(index == this->users.size());
+    }
+    return false;
+}
+bool Data::add_wl_user(Serie s){
+    if(this->active_user.add_wl_serie(s)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
+        }
+        return !(index == this->users.size());
+    }
+    return false;
+}
+bool Data::add_wl_user(Music m){
+    if(this->active_user.add_wl_music(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
+        }
+        return !(index == this->users.size());
+    }
+    return false;
+}
+
+bool Data::rm_wl_user(Movie m){
+    if(this->active_user.rm_wl_movie(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
+        }
+        return !(index == this->users.size());
+    }
+    return false;
+}
+bool Data::rm_wl_user(Serie s){
+    if(this->active_user.rm_wl_serie(s)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
+        }
+        return !(index == this->users.size());
+    }
+    return false;
+}
+bool Data::rm_wl_user(Music m){
+    if(this->active_user.rm_wl_music(m)){
+        int index = this->users.size();
+        foreach (User u, this->users) {
+            if(u.get_username() == this->active_user.get_username()){
+                index = this->users.indexOf(u);
+                this->users.replace(index, this->active_user);
+                return true;
+            }
+        }
+        return !(index == this->users.size());
+    }
+    return false;
+}
+
+bool Data::is_wl_user(Movie m){
+    return this->active_user.get_wl_movie().contains(m);
+}
+bool Data::is_wl_user(Serie m){
+    return this->active_user.get_wl_serie().contains(m);
+}
+bool Data::is_wl_user(Music m){
+    return this->active_user.get_wl_music().contains(m);
+}

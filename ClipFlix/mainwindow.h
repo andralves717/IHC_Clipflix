@@ -9,6 +9,7 @@
 #include "list.h"
 #include "data.h"
 #include "favourite.h"
+#include "watch_later.h"
 
 namespace Ui {
 class MainWindow;
@@ -54,6 +55,10 @@ private slots:
     void on_pushButton_5_clicked();
 
     void on_tabWidget_currentChanged(int index);
+
+    void on_pushButton_clicked();
+
+    void on_actionWatch_Later_triggered();
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;

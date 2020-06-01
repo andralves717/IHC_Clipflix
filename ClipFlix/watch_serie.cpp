@@ -42,6 +42,7 @@ watch_serie::watch_serie(QWidget *parent, Serie mw, Data *d) :
     ui->Duration->setText(QString::number(serie_watch.get_seasons())+" seasons");
     this->setWindowTitle("Watch "+serie_watch.get_title());
     if(d->is_fav_user(this->serie_watch)) ui->addFav->setText("Favourite");
+    if(d->is_wl_user(this->serie_watch)) ui->addWL->setText("Added to\nWatch Later");
 }
 
 watch_serie::~watch_serie()
@@ -59,7 +60,22 @@ void watch_serie::on_addFav_clicked()
     } else {
         if(data_watch_s->rm_fav_user(this->serie_watch)){
             qDebug() << "Removido "+ serie_watch.get_title()+" aos favoritos com sucesso!";
-            ui->addFav->setText("Add Favourite");
+            ui->addFav->setText("Add to\n Favourites");
+        }
+    }
+}
+
+void watch_serie::on_addWL_clicked()
+{
+    if(ui->addWL->text()=="Add to\nWatch Later"){
+        if(data_watch_s->add_wl_user(this->serie_watch)){
+            qDebug() << "Adicionado "+ serie_watch.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Added to\nWatch Later");
+        }
+    } else {
+        if(data_watch_s->rm_wl_user(this->serie_watch)){
+            qDebug() << "Removido "+ serie_watch.get_title()+" do Watch Later com sucesso!";
+            ui->addWL->setText("Add to\nWatch Later");
         }
     }
 }
@@ -97,3 +113,4 @@ void watch_serie::on_pushButton_2_pressed()
     ui->verticalLayout_4->addWidget(newQGroupBox);
 
 }
+

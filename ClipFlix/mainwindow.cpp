@@ -9,6 +9,7 @@
 //#include <QVideoWidget>
 
 favourite *fav_page;
+watch_later *wl_page;
 List *movies;
 List *series;
 List *musics;
@@ -24,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent, Data *data) :
     qDebug() << "oi?";
 
 
+    ui->pushButton->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_1->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_2->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_3->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
@@ -65,6 +67,9 @@ MainWindow::MainWindow(QWidget *parent, Data *data) :
 
     fav_page = new favourite(this, this->d);
     ui->fav_layout->addWidget(fav_page);
+
+    wl_page = new watch_later(this, this->d);
+    ui->wl_layout->addWidget(wl_page);
 
 //    QVideoWidget *video = new QVideoWidget(this);
 //    QMediaPlayer *player = new QMediaPlayer;
@@ -122,6 +127,12 @@ void MainWindow::on_actionFavourite_triggered()
     fav_page->refresh();
 }
 
+void MainWindow::on_actionWatch_Later_triggered()
+{
+    ui->tabWidget->setCurrentIndex(5);
+    wl_page->refresh();
+}
+
 void MainWindow::on_pushButton_5_clicked()
 {
     ui->tabWidget->setCurrentIndex(0);
@@ -152,10 +163,16 @@ void MainWindow::on_pushButton_1_clicked()
     fav_page->refresh();
 }
 
+void MainWindow::on_pushButton_clicked()
+{
+    ui->tabWidget->setCurrentIndex(5);
+    wl_page->refresh();
+}
 
 
 void MainWindow::on_tabWidget_currentChanged(int index)
 {
+    ui->pushButton->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_1->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_2->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
     ui->pushButton_3->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");
@@ -182,6 +199,9 @@ void MainWindow::on_tabWidget_currentChanged(int index)
         case 4:
             ui->pushButton_1->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;color:rgb(0,188,212);} QPushButton:hover {color: rgb(0,188,212);}");
         break;
+        case 5:
+            ui->pushButton->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;color:rgb(0,188,212);} QPushButton:hover {color: rgb(0,188,212);}");
+        break;
 
     }
 }
@@ -195,3 +215,5 @@ void MainWindow::mousePressEvent ( QMouseEvent * event ) {
         qDebug() << QString::number(tmp_user.get_fav_music().size())+" Músicas favoritos";
     }
 }
+
+

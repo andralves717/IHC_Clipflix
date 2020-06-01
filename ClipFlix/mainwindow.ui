@@ -235,6 +235,27 @@ color: white;</string>
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Liberation Sans</family>
+          <pointsize>11</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Watch Later</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item row="2" column="0">
@@ -582,6 +603,28 @@ color: white;</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="watch_later">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="wl_layout"/>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -620,6 +663,7 @@ color: white;</string>
     <addaction name="actionSeries"/>
     <addaction name="actionMusic"/>
     <addaction name="actionFavourite"/>
+    <addaction name="actionWatch_Later"/>
    </widget>
    <addaction name="menuMenu"/>
    <addaction name="menuGo"/>
@@ -658,6 +702,11 @@ color: white;</string>
   <action name="actionFavourite">
    <property name="text">
     <string>Favourite</string>
+   </property>
+  </action>
+  <action name="actionWatch_Later">
+   <property name="text">
+    <string>Watch Later</string>
    </property>
   </action>
  </widget>

@@ -57,7 +57,7 @@
             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;title&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="textInteractionFlags">
-            <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+            <set>Qt::LinksAccessibleByMouse</set>
            </property>
           </widget>
          </item>
@@ -75,6 +75,20 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="addWL">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Add
+Watch Later</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
@@ -89,7 +103,7 @@
           <string>Genre:</string>
          </property>
          <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+          <set>Qt::LinksAccessibleByMouse</set>
          </property>
         </widget>
        </item>
@@ -146,7 +160,7 @@
                <set>Qt::AlignCenter</set>
               </property>
               <property name="textInteractionFlags">
-               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               <set>Qt::LinksAccessibleByMouse</set>
               </property>
              </widget>
             </item>
@@ -181,7 +195,7 @@
                <set>Qt::AlignCenter</set>
               </property>
               <property name="textInteractionFlags">
-               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               <set>Qt::LinksAccessibleByMouse</set>
               </property>
              </widget>
             </item>
@@ -216,7 +230,7 @@
                <set>Qt::AlignCenter</set>
               </property>
               <property name="textInteractionFlags">
-               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+               <set>Qt::LinksAccessibleByMouse</set>
               </property>
              </widget>
             </item>

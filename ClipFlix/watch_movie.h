@@ -25,6 +25,8 @@ private slots:
     void on_pushButton_2_pressed();
 
 
+    void on_addWL_clicked();
+
 private:
     Ui::watch_movie *ui;
 

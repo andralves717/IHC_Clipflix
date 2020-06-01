@@ -92,7 +92,7 @@
            <item>
             <widget class="QPushButton" name="addFav">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+              <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -103,6 +103,20 @@
              </property>
              <property name="autoDefault">
               <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="addWL">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string>Add to
+Watch Later</string>
              </property>
             </widget>
            </item>
@@ -249,7 +263,7 @@
           <x>0</x>
           <y>0</y>
           <width>888</width>
-          <height>462</height>
+          <height>458</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">

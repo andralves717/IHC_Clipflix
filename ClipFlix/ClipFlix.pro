@@ -39,6 +39,7 @@ SOURCES += \
         serie.cpp \
         serie_scroll.cpp \
         user.cpp \
+        watch_later.cpp \
         watch_movie.cpp \
         watch_music.cpp \
         watch_serie.cpp
@@ -58,6 +59,7 @@ HEADERS += \
         serie.h \
         serie_scroll.h \
         user.h \
+        watch_later.h \
         watch_movie.h \
         watch_music.h \
         watch_serie.h
@@ -71,6 +73,7 @@ FORMS += \
         movie_scroll.ui \
         music_scroll.ui \
         serie_scroll.ui \
+        watch_later.ui \
         watch_movie.ui \
         watch_music.ui \
         watch_serie.ui

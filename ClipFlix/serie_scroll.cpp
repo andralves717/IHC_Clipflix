@@ -42,7 +42,7 @@ serie_scroll::serie_scroll(QWidget *parent, Serie s, Data *d) :
     } else genre_string = s.get_genre_string();
     ui->genre->setText("Genre: "+genre_string);
     ui->genre->setFont(font);
-    if(data_serie->is_fav_user(this->serie)) ui->addFav->setText("Favourite");
+    this->refresh();
 
 }
 
@@ -54,6 +54,8 @@ serie_scroll::~serie_scroll()
 void serie_scroll::refresh(){
     if(data_serie->is_fav_user(this->serie)) ui->addFav->setText("Favourite");
     else ui->addFav->setText("Add\n Favourite");
+    if(data_serie->is_wl_user(this->serie)) ui->addWL->setText("Added to\nWatch Later");
+    else ui->addWL->setText("Add\nWatch Later");
 }
 
 void serie_scroll::mousePressEvent ( QMouseEvent * event ) {
@@ -61,8 +63,7 @@ void serie_scroll::mousePressEvent ( QMouseEvent * event ) {
         qDebug() << this->ui->title->text();
         watch_serie wm(this,serie,data_serie);
         wm.exec();
-        if(data_serie->is_fav_user(this->serie)) ui->addFav->setText("Favourite");
-        else ui->addFav->setText("Add\n Favourite");
+        this->refresh();
     }
 }
 
@@ -80,6 +81,22 @@ void serie_scroll::on_addFav_clicked()
         }
     }
 }
+
+void serie_scroll::on_addWL_clicked()
+{
+    if(ui->addWL->text()=="Add\nWatch Later"){
+        if(data_serie->add_wl_user(this->serie)){
+            qDebug() << "Adicionado "+ serie.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Added to\nWatch Later");
+        }
+    } else {
+        if(data_serie->rm_wl_user(this->serie)){
+            qDebug() << "Removido "+ serie.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Add\nWatch Later");
+        }
+    }
+}
+
 
 void serie_scroll::hide(){
     QWidget::hide();

@@ -35,7 +35,7 @@ movie_scroll::movie_scroll(QWidget *parent, Movie m, Data *d) :
     } else genre_string = m.get_genre_string();
     ui->genre->setText("Genre: "+genre_string);
     ui->genre->setFont(font);
-    if(data_movie->is_fav_user(this->movie)) ui->addFav->setText("Favourite");
+    this->refresh();
 }
 
 movie_scroll::~movie_scroll()
@@ -46,6 +46,8 @@ movie_scroll::~movie_scroll()
 void movie_scroll::refresh(){
     if(data_movie->is_fav_user(this->movie)) ui->addFav->setText("Favourite");
     else ui->addFav->setText("Add\n Favourite");
+    if(data_movie->is_wl_user(this->movie)) ui->addWL->setText("Added to\nWatch Later");
+    else ui->addWL->setText("Add\nWatch Later");
 }
 
 
@@ -53,8 +55,7 @@ void movie_scroll::mousePressEvent ( QMouseEvent * event ) {
     if(event->button() == Qt::LeftButton ){
         watch_movie wm(this,movie,data_movie);
         wm.exec();
-        if(data_movie->is_fav_user(this->movie)) ui->addFav->setText("Favourite");
-        else ui->addFav->setText("Add\n Favourite");
+        this->refresh();
     }
 }
 
@@ -69,6 +70,21 @@ void movie_scroll::on_addFav_clicked()
         if(data_movie->rm_fav_user(this->movie)){
             qDebug() << "Removido "+ movie.get_title()+" aos favoritos com sucesso!";
             ui->addFav->setText("Add\n Favourite");
+        }
+    }
+}
+
+void movie_scroll::on_addWL_clicked()
+{
+    if(ui->addWL->text()=="Add\nWatch Later"){
+        if(data_movie->add_wl_user(this->movie)){
+            qDebug() << "Adicionado "+ movie.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Added to\nWatch Later");
+        }
+    } else {
+        if(data_movie->rm_wl_user(this->movie)){
+            qDebug() << "Removido "+ movie.get_title()+" ao Watch Later com sucesso!";
+            ui->addWL->setText("Add\nWatch Later");
         }
     }
 }
@@ -172,3 +188,4 @@ void movie_scroll::show(QList<int> years){
         }
     }
 }
+

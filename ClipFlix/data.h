@@ -42,6 +42,17 @@ public:
     bool is_fav_user(Serie m);
     bool is_fav_user(Music m);
 
+    bool add_wl_user(Movie m);
+    bool add_wl_user(Serie s);
+    bool add_wl_user(Music m);
+
+    bool rm_wl_user(Movie m);
+    bool rm_wl_user(Serie s);
+    bool rm_wl_user(Music m);
+
+    bool is_wl_user(Movie m);
+    bool is_wl_user(Serie m);
+    bool is_wl_user(Music m);
 
 private:
 
