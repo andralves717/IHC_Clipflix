@@ -43,6 +43,10 @@ watch_serie::watch_serie(QWidget *parent, Serie mw, Data *d) :
     this->setWindowTitle("Watch "+serie_watch.get_title());
     if(d->is_fav_user(this->serie_watch)) ui->addFav->setText("Favourite");
     if(d->is_wl_user(this->serie_watch)) ui->addWL->setText("Added to\nWatch Later");
+    int width = ui->player->width();
+    QPixmap player_img(":/images/image/video-player.jpg");
+    player_img = player_img.scaledToWidth(width);
+    ui->player->setPixmap(player_img);
 }
 
 watch_serie::~watch_serie()

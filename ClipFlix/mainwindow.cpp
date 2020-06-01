@@ -21,8 +21,7 @@ MainWindow::MainWindow(QWidget *parent, Data *data) :
     ui->setupUi(this);
 
     d = data;
-    qDebug() << d->get_movies().size();
-    qDebug() << "oi?";
+    qDebug() << "Bem-vindos ao ClipFlix";
 
 
     ui->pushButton->setStyleSheet("QPushButton {background-color: rgb(46,52,54);border: 0px;} QPushButton:hover {color: rgb(0,188,212);}");

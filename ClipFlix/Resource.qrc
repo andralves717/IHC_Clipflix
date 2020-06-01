@@ -12,6 +12,7 @@
         <file>image/movie_2.jpg</file>
         <file>image/movie_3.jpg</file>
         <file>image/facebook.png</file>
+        <file>image/video-player.jpg</file>
     </qresource>
     <qresource prefix="/tmp"/>
 </RCC>

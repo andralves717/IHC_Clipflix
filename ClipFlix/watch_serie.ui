@@ -262,7 +262,7 @@ Watch Later</string>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="player">
            <property name="minimumSize">
             <size>
              <width>500</width>
