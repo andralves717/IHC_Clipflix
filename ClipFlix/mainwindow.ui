@@ -245,7 +245,7 @@ color: white;</string>
         </property>
         <property name="font">
          <font>
-          <family>Liberation Sans</family>
+          <family>Arial</family>
           <pointsize>11</pointsize>
           <weight>75</weight>
           <bold>true</bold>
@@ -309,8 +309,8 @@ color: white;</string>
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>850</width>
-             <height>840</height>
+             <width>847</width>
+             <height>843</height>
             </rect>
            </property>
            <property name="sizePolicy">
@@ -636,7 +636,7 @@ color: white;</string>
      <x>0</x>
      <y>0</y>
      <width>900</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="defaultUp">
